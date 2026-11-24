@@ -1,0 +1,2728 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+  <title>ASKESIS · Templo &amp; Disciplina</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-cream: #FAF7F0;
+      --bg-card: #F3EDE0;
+      --bg-elevated: #FFFDF9;
+      --border-subtle: #DCD3C1;
+      --burgundy: #5C1616;
+      --burgundy-dark: #3F0D0D;
+      --gold: #B8860B;
+      --gold-soft: #DFC98A;
+      --text-dark: #2C221E;
+      --text-muted: #685952;
+      --success: #255938;
+      --success-bg: #EBF3ED;
+      --warning: #8A5A00;
+      --warning-bg: #FBF4E4;
+      --danger-bg: #F8EBEB;
+      --radius: 6px;
+      --font-serif: "Playfair Display", Georgia, "Palatino Linotype", serif;
+      --font-sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--bg-cream);
+      color: var(--text-dark);
+      font-family: var(--font-sans);
+      line-height: 1.5;
+      padding-bottom: 84px;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* =========================================
+       ENCABEZADO LITÚRGICO / BIZANTINO
+       ========================================= */
+    header {
+      background: linear-gradient(180deg, var(--burgundy-dark) 0%, var(--burgundy) 100%);
+      color: #FAF7F0;
+      text-align: center;
+      padding: 1.35rem 1rem 1.15rem;
+      border-bottom: 3px solid var(--gold);
+      box-shadow: 0 2px 10px rgba(44, 34, 30, 0.14);
+    }
+
+    .christogram {
+      font-family: var(--font-serif);
+      font-size: 0.74rem;
+      font-weight: 600;
+      letter-spacing: 0.28em;
+      color: var(--gold-soft);
+      margin-bottom: 0.3rem;
+    }
+
+    .header-title {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.65rem;
+      font-family: var(--font-serif);
+      font-size: 1.4rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .epigraph {
+      font-family: var(--font-serif);
+      font-style: italic;
+      font-size: 0.82rem;
+      color: #EFE5D1;
+      max-width: 580px;
+      margin: 0.45rem auto 0;
+      opacity: 0.94;
+    }
+
+    /* =========================================
+       NAVEGACIÓN DE 3 PESTAÑAS
+       ========================================= */
+    nav.mode-tabs {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      max-width: 960px;
+      margin: 1rem auto 0;
+      padding: 0 0.85rem;
+      gap: 0.5rem;
+    }
+
+    .tab-btn {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      color: var(--text-muted);
+      font-family: var(--font-serif);
+      font-size: 0.88rem;
+      font-weight: 700;
+      padding: 0.7rem 0.5rem;
+      border-radius: var(--radius);
+      cursor: pointer;
+      transition: all 0.18s ease;
+    }
+
+    .tab-btn:hover {
+      border-color: var(--gold);
+      color: var(--burgundy);
+    }
+
+    .tab-btn.active {
+      background: var(--burgundy);
+      color: #FAF7F0;
+      border-color: var(--gold);
+      box-shadow: 0 2px 6px rgba(92, 22, 22, 0.22);
+    }
+
+    /* =========================================
+       CONTENEDORES Y TARJETAS
+       ========================================= */
+    main {
+      max-width: 1360px;
+      margin: 0.95rem auto;
+      padding: 0 0.85rem;
+    }
+
+    .narrow-container {
+      max-width: 820px;
+      margin: 0 auto;
+    }
+
+    .panel {
+      display: none;
+    }
+
+    .panel.active {
+      display: block;
+    }
+
+    .card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-top: 2px solid var(--gold);
+      border-radius: var(--radius);
+      padding: 1.15rem;
+      margin-bottom: 1rem;
+      box-shadow: 0 1px 4px rgba(44, 34, 30, 0.05);
+    }
+
+    h2 {
+      font-family: var(--font-serif);
+      font-size: 1.05rem;
+      color: var(--burgundy);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      border-bottom: 1px solid var(--border-subtle);
+      padding-bottom: 0.45rem;
+      margin-bottom: 0.9rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    h3 {
+      font-family: var(--font-serif);
+      font-size: 0.95rem;
+      color: var(--burgundy);
+    }
+
+    .ornament-divider {
+      text-align: center;
+      color: var(--gold);
+      font-size: 0.8rem;
+      letter-spacing: 0.35em;
+      margin: 0.75rem 0;
+      user-select: none;
+    }
+
+    /* =========================================
+       FORMULARIOS Y BOTONES
+       ========================================= */
+    .form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.75rem;
+    }
+
+    @media (max-width: 560px) {
+      .form-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .form-group {
+      margin-bottom: 0.75rem;
+    }
+
+    label {
+      display: block;
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      margin-bottom: 0.25rem;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    input, select, textarea {
+      width: 100%;
+      padding: 0.58rem 0.72rem;
+      border: 1px solid var(--border-subtle);
+      border-radius: 4px;
+      background: var(--bg-elevated);
+      color: var(--text-dark);
+      font-size: 0.9rem;
+      font-family: var(--font-sans);
+    }
+
+    input:focus, select:focus, textarea:focus {
+      outline: none;
+      border-color: var(--burgundy);
+      box-shadow: 0 0 0 2px rgba(92, 22, 22, 0.12);
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.35rem;
+      background: var(--burgundy);
+      color: #FAF7F0;
+      border: 1px solid var(--gold);
+      padding: 0.62rem 1rem;
+      font-size: 0.86rem;
+      font-weight: 600;
+      border-radius: 4px;
+      cursor: pointer;
+      width: 100%;
+      transition: background 0.15s ease;
+      font-family: var(--font-sans);
+    }
+
+    .btn:hover {
+      background: var(--burgundy-dark);
+    }
+
+    .btn-secondary {
+      background: var(--bg-elevated);
+      color: var(--text-dark);
+      border: 1px solid var(--border-subtle);
+      font-size: 0.82rem;
+      padding: 0.5rem 0.75rem;
+    }
+
+    .btn-secondary:hover {
+      background: #E8DFCE;
+      border-color: var(--gold);
+    }
+
+    .btn-sm {
+      width: auto;
+      padding: 0.32rem 0.6rem;
+      font-size: 0.75rem;
+    }
+
+    .btn-guide {
+      background: transparent;
+      color: var(--burgundy);
+      border: 1px solid var(--gold);
+      padding: 0.28rem 0.52rem;
+      font-size: 0.72rem;
+      font-weight: 600;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+
+    .btn-guide:hover {
+      background: var(--burgundy);
+      color: #FAF7F0;
+    }
+
+    .status-chip {
+      font-family: var(--font-sans);
+      font-size: 0.72rem;
+      font-weight: 600;
+      text-transform: none;
+      letter-spacing: normal;
+      background: var(--bg-elevated);
+      color: var(--burgundy);
+      border: 1px solid var(--border-subtle);
+      padding: 0.18rem 0.55rem;
+      border-radius: 99px;
+    }
+
+    /* =========================================
+       PESTAÑA 1: FICHA TÉCNICA & META MENSUAL
+       ========================================= */
+    .ficha-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+      gap: 0.55rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .ficha-item {
+      background: var(--bg-elevated);
+      border: 1px solid var(--border-subtle);
+      border-radius: 4px;
+      padding: 0.55rem 0.7rem;
+    }
+
+    .ficha-item-lbl {
+      font-size: 0.68rem;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      letter-spacing: 0.04em;
+    }
+
+    .ficha-item-val {
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--text-dark);
+      margin-top: 0.1rem;
+    }
+
+    .equip-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.35rem;
+      margin-top: 0.35rem;
+    }
+
+    .equip-tag {
+      background: var(--bg-elevated);
+      border: 1px solid var(--border-subtle);
+      font-size: 0.75rem;
+      padding: 0.2rem 0.5rem;
+      border-radius: 4px;
+      color: var(--text-dark);
+    }
+
+    .meta-box {
+      background: var(--bg-elevated);
+      border: 1px solid var(--gold);
+      border-left: 4px solid var(--burgundy);
+      border-radius: 4px;
+      padding: 0.85rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .meta-text {
+      font-family: var(--font-serif);
+      font-size: 0.96rem;
+      color: var(--burgundy);
+      font-weight: 600;
+      margin-bottom: 0.55rem;
+    }
+
+    .progress-track {
+      width: 100%;
+      height: 12px;
+      background: #E4DBC8;
+      border-radius: 99px;
+      overflow: hidden;
+      border: 1px solid var(--border-subtle);
+    }
+
+    .progress-fill {
+      height: 100%;
+      background: linear-gradient(90deg, var(--burgundy) 0%, var(--gold) 100%);
+      width: 0%;
+      transition: width 0.35s ease;
+    }
+
+    .progress-stats {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.76rem;
+      color: var(--text-muted);
+      margin-top: 0.35rem;
+      font-weight: 600;
+    }
+
+    .day-config-item {
+      background: var(--bg-elevated);
+      border: 1px solid var(--border-subtle);
+      border-radius: 4px;
+      padding: 0.7rem;
+      margin-bottom: 0.6rem;
+    }
+
+    /* =========================================
+       PESTAÑA 2: CALENDARIO MENSUAL REAL
+       ========================================= */
+    .cal-toolbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .cal-nav-group {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .cal-legend {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      font-size: 0.75rem;
+      color: var(--text-muted);
+    }
+
+    .legend-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+    }
+
+    .legend-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 2px;
+      display: inline-block;
+    }
+
+    .cal-grid {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      gap: 0.3rem;
+    }
+
+    .cal-weekday {
+      text-align: center;
+      font-family: var(--font-serif);
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: var(--burgundy);
+      padding: 0.3rem 0;
+      border-bottom: 1px solid var(--border-subtle);
+    }
+
+    .cal-cell {
+      background: var(--bg-elevated);
+      border: 1px solid var(--border-subtle);
+      border-radius: 4px;
+      min-height: 54px;
+      padding: 0.32rem 0.4rem;
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: all 0.14s ease;
+    }
+
+    .cal-cell:hover {
+      border-color: var(--gold);
+    }
+
+    .cal-cell.empty {
+      background: transparent;
+      border-color: transparent;
+      cursor: default;
+    }
+
+    .cal-cell.selected-week {
+      outline: 2px solid var(--burgundy);
+      outline-offset: -1px;
+    }
+
+    .cal-cell.is-today {
+      box-shadow: inset 0 0 0 1.5px var(--gold);
+    }
+
+    .cal-cell.status-trained {
+      background: var(--success-bg);
+      border-color: #9BC2A8;
+    }
+
+    .cal-cell.status-planned {
+      background: #FFFDF7;
+      border-left: 3px solid var(--gold);
+    }
+
+    .cal-cell.status-free {
+      background: #F6F1E6;
+      opacity: 0.82;
+    }
+
+    .cal-day-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.78rem;
+      font-weight: 600;
+    }
+
+    .cal-badge-trained {
+      background: var(--success);
+      color: #FFF;
+      font-size: 0.65rem;
+      font-weight: 700;
+      padding: 0 0.3rem;
+      border-radius: 3px;
+    }
+
+    .cal-cell-tag {
+      font-size: 0.65rem;
+      color: var(--text-muted);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    /* =========================================
+       PESTAÑA 2: REGLA SEMANAL (7 COLUMNAS)
+       ========================================= */
+    .week-columns-grid {
+      display: grid;
+      grid-template-columns: repeat(7, minmax(0, 1fr));
+      gap: 0.55rem;
+      align-items: start;
+    }
+
+    @media (max-width: 1180px) {
+      .week-columns-grid {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 780px) {
+      .week-columns-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 500px) {
+      .week-columns-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .day-col {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      min-height: 240px;
+    }
+
+    .day-col.col-active {
+      border-top: 3px solid var(--burgundy);
+    }
+
+    .day-col.col-free {
+      background: #F6F2E8;
+      border-top: 3px solid var(--border-subtle);
+    }
+
+    .day-col-header {
+      padding: 0.6rem 0.65rem;
+      background: var(--bg-elevated);
+      border-bottom: 1px solid var(--border-subtle);
+    }
+
+    .day-col.col-active .day-col-header {
+      background: linear-gradient(180deg, #FBF7EE 0%, var(--bg-card) 100%);
+    }
+
+    .day-col-title-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 0.2rem;
+    }
+
+    .day-col-name {
+      font-family: var(--font-serif);
+      font-size: 0.92rem;
+      font-weight: 700;
+      color: var(--burgundy);
+    }
+
+    .day-col-date {
+      font-size: 0.7rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      background: var(--bg-cream);
+      border: 1px solid var(--border-subtle);
+      padding: 0.08rem 0.35rem;
+      border-radius: 3px;
+    }
+
+    .day-col-date.trained-date {
+      background: var(--success-bg);
+      color: var(--success);
+      border-color: #9BC2A8;
+    }
+
+    .day-col-profile {
+      font-size: 0.73rem;
+      font-weight: 600;
+      color: var(--text-dark);
+      line-height: 1.3;
+    }
+
+    .day-col-body {
+      padding: 0.55rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      flex: 1;
+    }
+
+    .ex-mini-card {
+      background: var(--bg-elevated);
+      border: 1px solid var(--border-subtle);
+      border-radius: 4px;
+      padding: 0.5rem;
+    }
+
+    .ex-mini-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 0.25rem;
+      margin-bottom: 0.22rem;
+    }
+
+    .block-badge {
+      background: var(--burgundy);
+      color: #FAF7F0;
+      font-size: 0.65rem;
+      font-weight: 700;
+      padding: 0.08rem 0.34rem;
+      border-radius: 3px;
+    }
+
+    .block-badge.cardio-badge {
+      background: var(--gold);
+      color: #FFF;
+    }
+
+    .ex-mini-name {
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--text-dark);
+      line-height: 1.28;
+      margin-bottom: 0.2rem;
+    }
+
+    .ex-mini-rx {
+      font-size: 0.72rem;
+      color: var(--text-muted);
+      margin-bottom: 0.32rem;
+    }
+
+    .autogestion-tag {
+      display: block;
+      font-size: 0.69rem;
+      line-height: 1.3;
+      padding: 0.26rem 0.38rem;
+      border-radius: 3px;
+      border-left: 2.5px solid var(--gold);
+      background: var(--warning-bg);
+      color: var(--text-dark);
+      margin-bottom: 0.4rem;
+    }
+
+    .autogestion-tag strong {
+      color: var(--burgundy);
+      font-size: 0.65rem;
+      text-transform: uppercase;
+      display: block;
+    }
+
+    .autogestion-tag.auto-fatiga {
+      background: var(--danger-bg);
+      border-left-color: var(--burgundy);
+    }
+
+    .autogestion-tag.auto-progresar {
+      background: var(--success-bg);
+      border-left-color: var(--success);
+    }
+
+    .autogestion-tag.auto-progresar strong {
+      color: var(--success);
+    }
+
+    .ex-mini-actions {
+      display: flex;
+      gap: 0.3rem;
+    }
+
+    .ex-mini-actions .btn-sm {
+      flex: 1;
+      padding: 0.26rem 0.35rem;
+      font-size: 0.7rem;
+    }
+
+    .free-day-box {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 1.2rem 0.65rem;
+      color: var(--text-muted);
+    }
+
+    .free-day-label {
+      font-family: var(--font-serif);
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: var(--burgundy);
+      letter-spacing: 0.04em;
+      margin-bottom: 0.3rem;
+    }
+
+    .free-day-desc {
+      font-size: 0.74rem;
+      line-height: 1.4;
+    }
+
+    /* =========================================
+       PESTAÑA 3: BITÁCORA Y CHECK-IN
+       ========================================= */
+    .checkin-options {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0.45rem;
+      margin-bottom: 0.75rem;
+    }
+
+    @media (max-width: 540px) {
+      .checkin-options {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .checkin-pill {
+      background: var(--bg-elevated);
+      border: 1px solid var(--border-subtle);
+      border-radius: 4px;
+      padding: 0.55rem 0.5rem;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--text-dark);
+      cursor: pointer;
+      text-align: center;
+      transition: all 0.15s ease;
+    }
+
+    .checkin-pill:hover {
+      border-color: var(--gold);
+    }
+
+    .checkin-pill.selected {
+      background: var(--burgundy);
+      color: #FAF7F0;
+      border-color: var(--gold);
+    }
+
+    .kpi-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0.55rem;
+      margin-bottom: 0.9rem;
+      text-align: center;
+    }
+
+    .kpi-box {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: 4px;
+      padding: 0.55rem 0.3rem;
+    }
+
+    .kpi-val {
+      font-family: var(--font-serif);
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--burgundy);
+    }
+
+    .kpi-lbl {
+      font-size: 0.68rem;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      letter-spacing: 0.03em;
+    }
+
+    .table-wrap {
+      overflow-x: auto;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.84rem;
+    }
+
+    th {
+      background: var(--bg-elevated);
+      color: var(--burgundy);
+      font-family: var(--font-serif);
+      text-align: left;
+      padding: 0.55rem 0.5rem;
+      border-bottom: 1.5px solid var(--gold);
+      white-space: nowrap;
+    }
+
+    td {
+      padding: 0.55rem 0.5rem;
+      border-bottom: 1px solid var(--border-subtle);
+      vertical-align: middle;
+    }
+
+    tr:last-child td {
+      border-bottom: none;
+    }
+
+    .feedback-box {
+      background: var(--bg-elevated);
+      border-left: 3px solid var(--gold);
+      padding: 0.8rem;
+      margin-top: 0.85rem;
+      border-radius: 0 4px 4px 0;
+      font-size: 0.88rem;
+    }
+
+    /* =========================================
+       MODAL MINIMALISTA DE GUÍA TÉCNICA
+       ========================================= */
+    .modal-backdrop {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(44, 34, 30, 0.58);
+      z-index: 200;
+      align-items: center;
+      justify-content: center;
+      padding: 1rem;
+    }
+
+    .modal-backdrop.open {
+      display: flex;
+    }
+
+    .modal-card {
+      background: var(--bg-cream);
+      border: 1.5px solid var(--gold);
+      border-radius: var(--radius);
+      max-width: 430px;
+      width: 100%;
+      padding: 1.15rem;
+      box-shadow: 0 10px 28px rgba(0, 0, 0, 0.25);
+    }
+
+    .modal-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 0.5rem;
+      border-bottom: 1px solid var(--border-subtle);
+      padding-bottom: 0.5rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .modal-title {
+      font-family: var(--font-serif);
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--burgundy);
+    }
+
+    .modal-close {
+      background: transparent;
+      border: none;
+      font-size: 1.25rem;
+      line-height: 1;
+      color: var(--text-muted);
+      cursor: pointer;
+    }
+
+    .svg-stage {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: 4px;
+      padding: 0.5rem;
+      margin-bottom: 0.75rem;
+      text-align: center;
+    }
+
+    .svg-caption {
+      font-size: 0.68rem;
+      color: var(--text-muted);
+      margin-top: 0.2rem;
+    }
+
+    .guide-bullets {
+      list-style: none;
+      font-size: 0.84rem;
+      margin-bottom: 0.85rem;
+    }
+
+    .guide-bullets li {
+      padding: 0.32rem 0;
+      border-bottom: 1px dashed var(--border-subtle);
+    }
+
+    .guide-bullets li:last-child {
+      border-bottom: none;
+    }
+
+    .guide-bullets strong {
+      color: var(--burgundy);
+    }
+
+    .modal-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-top: 0.5rem;
+      border-top: 1px solid var(--border-subtle);
+    }
+
+    .yt-link {
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: var(--burgundy);
+      text-decoration: none;
+      border-bottom: 1px dotted var(--gold);
+    }
+
+    .yt-link:hover {
+      color: var(--gold);
+    }
+
+    /* =========================================
+       CRONÓMETRO FLOTANTE DE DESCANSO
+       ========================================= */
+    .timer-bar {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: var(--burgundy-dark);
+      color: #FAF7F0;
+      border-top: 2px solid var(--gold);
+      padding: 0.5rem 0.9rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      z-index: 100;
+    }
+
+    .timer-display {
+      font-family: var(--font-serif);
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--gold-soft);
+      min-width: 66px;
+    }
+
+    .timer-controls {
+      display: flex;
+      gap: 0.35rem;
+    }
+
+    .timer-btn {
+      background: rgba(250, 247, 240, 0.12);
+      color: #FAF7F0;
+      border: 1px solid var(--gold-soft);
+      border-radius: 4px;
+      padding: 0.32rem 0.55rem;
+      font-size: 0.76rem;
+      cursor: pointer;
+    }
+
+    .timer-btn.active-timer {
+      background: var(--gold);
+      color: var(--burgundy-dark);
+      font-weight: 700;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="christogram">IC · XC · NIKA</div>
+    <div class="header-title">
+      <svg width="20" height="26" viewBox="0 0 24 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <path d="M12 2V30M8 7H16M5 13H19M7 23L17 20" stroke="#DFC98A" stroke-width="2.2" stroke-linecap="round"/>
+      </svg>
+      <span>ASKESIS · TEMPLO &amp; DISCIPLINA</span>
+    </div>
+    <p class="epigraph">«¿O ignoráis que vuestro cuerpo es templo del Espíritu Santo? Glorificad, pues, a Dios en vuestro cuerpo.» (1 Cor 6, 19-20)</p>
+  </header>
+
+  <nav class="mode-tabs">
+    <button class="tab-btn" data-tab="tab-ficha">1 · Ficha Técnica</button>
+    <button class="tab-btn active" data-tab="tab-regla">2 · Regla Semanal &amp; Calendario</button>
+    <button class="tab-btn" data-tab="tab-bitacora">3 · Bitácora</button>
+  </nav>
+
+  <main>
+    <!-- =========================================================================
+         PESTAÑA 1: FICHA TÉCNICA & METAS DEL MES
+         ========================================================================= -->
+    <section id="tab-ficha" class="panel">
+      <div class="narrow-container">
+        <!-- META MENSUAL CLARA -->
+        <div class="card">
+          <h2>
+            <span>Meta del Mes Actual</span>
+            <span class="status-chip" id="meta-mes-nombre">Mes en curso</span>
+          </h2>
+          <div class="meta-box">
+            <div class="meta-text" id="meta-display-texto"></div>
+            <div class="progress-track">
+              <div class="progress-fill" id="meta-progress-bar"></div>
+            </div>
+            <div class="progress-stats">
+              <span id="meta-sesiones-texto">0 / 16 sesiones cumplidas</span>
+              <span id="meta-porcentaje-texto">0%</span>
+            </div>
+          </div>
+
+          <div class="form-grid">
+            <div class="form-group" style="margin-bottom:0.4rem;">
+              <label for="in-meta-texto">Definir Meta Mensual</label>
+              <input type="text" id="in-meta-texto" />
+            </div>
+            <div class="form-group" style="margin-bottom:0.4rem;">
+              <label for="in-meta-sesiones">Sesiones Objetivo del Mes</label>
+              <input type="number" id="in-meta-sesiones" min="4" max="31" />
+            </div>
+          </div>
+          <button type="button" class="btn btn-secondary" id="btn-guardar-meta">Actualizar Meta del Mes</button>
+        </div>
+
+        <!-- DATOS DEL ATLETA Y EQUIPAMIENTO -->
+        <div class="card">
+          <h2><span>Datos del Atleta &amp; Equipamiento</span></h2>
+          <div class="ficha-grid" id="ficha-datos-grid"></div>
+          <label style="margin-top:0.5rem;">Equipamiento Disponible en Casa</label>
+          <div class="equip-tags" id="ficha-equip-tags"></div>
+
+          <details style="margin-top:0.85rem;">
+            <summary style="cursor:pointer; font-size:0.82rem; font-weight:600; color:var(--burgundy);">
+              Editar datos antropométricos o equipo
+            </summary>
+            <div style="margin-top:0.75rem;">
+              <div class="form-grid">
+                <div class="form-group">
+                  <label for="pf-nombre">Nombre</label>
+                  <input type="text" id="pf-nombre" />
+                </div>
+                <div class="form-group">
+                  <label for="pf-nivel">Nivel</label>
+                  <select id="pf-nivel">
+                    <option value="Principiante">Principiante</option>
+                    <option value="Intermedio">Intermedio</option>
+                    <option value="Avanzado">Avanzado</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label for="pf-estatura">Estatura (cm)</label>
+                  <input type="number" id="pf-estatura" />
+                </div>
+                <div class="form-group">
+                  <label for="pf-peso">Peso Actual (kg)</label>
+                  <input type="number" id="pf-peso" step="0.1" />
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="pf-objetivo">Objetivo Principal</label>
+                <input type="text" id="pf-objetivo" />
+              </div>
+              <div class="form-group">
+                <label for="pf-equipo">Equipamiento (separado por comas)</label>
+                <textarea id="pf-equipo" rows="2"></textarea>
+              </div>
+              <button type="button" class="btn" id="btn-guardar-perfil">Guardar Datos del Atleta</button>
+            </div>
+          </details>
+        </div>
+
+        <!-- PERFILES CONFIGURABLES POR DÍA DE ENTRENAMIENTO -->
+        <div class="card">
+          <h2><span>Perfiles Configurables por Día (4 Sesiones)</span></h2>
+          <div id="perfiles-dia-container"></div>
+          <button type="button" class="btn btn-secondary" id="btn-guardar-perfiles-dia">Guardar Enfoques de los 4 Días</button>
+
+          <div class="ornament-divider">✦ ✦ ✦</div>
+          <div style="display:flex; gap:0.5rem;">
+            <button type="button" class="btn btn-secondary" id="btn-export-json">Respaldo Completo (JSON)</button>
+            <button type="button" class="btn btn-secondary" id="btn-reset-db">Restaurar Valores Base</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================================
+         PESTAÑA 2: REGLA SEMANAL (COLUMNAS POR DÍA) & CALENDARIO MENSUAL
+         ========================================================================= -->
+    <section id="tab-regla" class="panel active">
+      <!-- CALENDARIO MENSUAL REAL -->
+      <div class="card">
+        <h2>
+          <span>Calendario Mensual de Disciplina</span>
+          <span class="status-chip" id="cal-resumen-mes">0 sesiones en el mes</span>
+        </h2>
+
+        <div class="cal-toolbar">
+          <div class="cal-nav-group">
+            <button type="button" class="btn btn-secondary btn-sm" id="btn-mes-prev">◀ Anterior</button>
+            <input type="month" id="selector-mes" style="width:auto; padding:0.32rem 0.5rem; font-size:0.84rem;" />
+            <button type="button" class="btn btn-secondary btn-sm" id="btn-mes-next">Siguiente ▶</button>
+            <button type="button" class="btn btn-secondary btn-sm" id="btn-mes-hoy">Hoy</button>
+          </div>
+
+          <div class="cal-legend">
+            <span class="legend-item"><span class="legend-dot" style="background:var(--success);"></span> Entrenado (✓)</span>
+            <span class="legend-item"><span class="legend-dot" style="background:var(--gold);"></span> Planificado</span>
+            <span class="legend-item"><span class="legend-dot" style="background:#E6DFD0;"></span> Día Libre</span>
+          </div>
+        </div>
+
+        <div class="cal-grid" id="calendario-grid"></div>
+      </div>
+
+      <!-- CABECERA DE REGLA SEMANAL + REASIGNACIÓN DE DÍAS -->
+      <div class="card" style="padding-bottom:0.85rem;">
+        <h2>
+          <span>Regla Semanal · Lunes a Domingo (30 min)</span>
+          <div style="display:flex; align-items:center; gap:0.4rem; flex-wrap:wrap;">
+            <span class="status-chip" id="semana-activa-label">Semana actual</span>
+            <button type="button" class="btn btn-secondary btn-sm" id="btn-toggle-asignacion">Reasignar Días Libres</button>
+          </div>
+        </h2>
+
+        <!-- Panel desplegable para mover qué días son entrenamiento y qué días son libres -->
+        <div id="panel-reasignar-dias" style="display:none; background:var(--bg-elevated); border:1px solid var(--border-subtle); border-radius:4px; padding:0.75rem; margin-bottom:0.85rem;">
+          <div style="font-size:0.78rem; color:var(--text-muted); margin-bottom:0.5rem;">
+            Asigna cada bloque de entrenamiento (Día 1 a Día 4) o <strong>Día Libre</strong> a cualquier jornada de la semana:
+          </div>
+          <div id="grid-asignacion-dias" style="display:grid; grid-template-columns:repeat(auto-fit, minmax(135px, 1fr)); gap:0.45rem; margin-bottom:0.6rem;"></div>
+          <button type="button" class="btn btn-sm" id="btn-guardar-asignacion">Aplicar Distribución Semanal</button>
+        </div>
+
+        <!-- 7 COLUMNAS VERTICALES DE LUNES A DOMINGO -->
+        <div class="week-columns-grid" id="week-columns-container"></div>
+      </div>
+    </section>
+
+    <!-- =========================================================================
+         PESTAÑA 3: BITÁCORA, CHECK-IN Y REGISTRO
+         ========================================================================= -->
+    <section id="tab-bitacora" class="panel">
+      <div class="narrow-container">
+        <div class="kpi-row">
+          <div class="kpi-box">
+            <div class="kpi-val" id="kpi-tonelaje">0 kg</div>
+            <div class="kpi-lbl">Tonelaje Hoy</div>
+          </div>
+          <div class="kpi-box">
+            <div class="kpi-val" id="kpi-series">0</div>
+            <div class="kpi-lbl">Bloques / Series Hoy</div>
+          </div>
+          <div class="kpi-box">
+            <div class="kpi-val" id="kpi-total-dias">0</div>
+            <div class="kpi-lbl">Días Entrenados (Mes)</div>
+          </div>
+        </div>
+
+        <!-- CHECK-IN DE SENSACIONES DIARIAS -->
+        <div class="card">
+          <h2>
+            <span>Estado de Disposición (Check-In)</span>
+            <span class="status-chip" id="checkin-status-chip">🟡 Normal (Estable)</span>
+          </h2>
+
+          <label>Disposición física y espiritual de hoy</label>
+          <div class="checkin-options" id="checkin-options">
+            <button type="button" class="checkin-pill" data-estado="optimo" data-label="🟢 Óptimo (Energía Alta)">
+              🟢 Óptimo (Energía Alta)
+            </button>
+            <button type="button" class="checkin-pill selected" data-estado="normal" data-label="🟡 Normal (Estable)">
+              🟡 Normal (Estable)
+            </button>
+            <button type="button" class="checkin-pill" data-estado="fatigado" data-label="🔴 Fatigado (Poco descanso / Molestia)">
+              🔴 Fatigado (Poco descanso / Molestia)
+            </button>
+          </div>
+
+          <div class="form-group" style="margin-bottom:0.55rem;">
+            <label for="checkin-notas">Notas físicas breves</label>
+            <input type="text" id="checkin-notas" placeholder="Ej: dormí 5h, ligera rigidez lumbar, buena energía..." />
+          </div>
+          <button type="button" class="btn btn-secondary" id="btn-guardar-checkin">Guardar Check-In de Hoy</button>
+        </div>
+
+        <!-- REGISTRO RÁPIDO (FUERZA Y CARDIO) -->
+        <div class="card">
+          <h2>
+            <span>Registrar Esfuerzo (Fuerza o Cardio)</span>
+            <span style="font-size:0.74rem; color:var(--text-muted);" id="fecha-hoy-label"></span>
+          </h2>
+
+          <div class="form-group">
+            <label for="texto-rapido">Entrada rápida por texto libre</label>
+            <input type="text" id="texto-rapido" placeholder='Ej: "Press banca 3x10 60kg RPE 8" o "Remo ergómetro 8min 1800m RPE 8"' />
+          </div>
+          <button type="button" class="btn" id="btn-registrar-texto">Registrar en Bitácora</button>
+
+          <div class="ornament-divider">✦ ✦ ✦</div>
+
+          <details id="details-manual">
+            <summary style="cursor:pointer; font-size:0.82rem; font-weight:600; color:var(--burgundy);">
+              Formulario manual detallado (Fuerza / Cardio)
+            </summary>
+            <div style="margin-top:0.75rem;">
+              <div class="form-grid">
+                <div class="form-group">
+                  <label for="man-tipo">Tipo de trabajo</label>
+                  <select id="man-tipo">
+                    <option value="fuerza">Fuerza (Series × Reps × Peso)</option>
+                    <option value="cardio">Cardio / Ergómetro (Minutos / Distancia)</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label for="man-ejercicio">Ejercicio</label>
+                  <input type="text" id="man-ejercicio" placeholder="Nombre del ejercicio" />
+                </div>
+              </div>
+
+              <div id="campos-fuerza" class="form-grid">
+                <div class="form-group">
+                  <label for="man-series">Series</label>
+                  <input type="number" id="man-series" value="3" min="1" max="15" />
+                </div>
+                <div class="form-group">
+                  <label for="man-reps">Repeticiones</label>
+                  <input type="number" id="man-reps" value="10" min="1" max="100" />
+                </div>
+                <div class="form-group">
+                  <label for="man-peso">Peso (kg)</label>
+                  <input type="number" id="man-peso" value="50" step="0.5" min="0" />
+                </div>
+                <div class="form-group">
+                  <label for="man-rpe-f">RPE (1 - 10)</label>
+                  <input type="number" id="man-rpe-f" value="8" step="0.5" min="1" max="10" />
+                </div>
+              </div>
+
+              <div id="campos-cardio" class="form-grid" style="display:none;">
+                <div class="form-group">
+                  <label for="man-minutos">Duración (minutos)</label>
+                  <input type="number" id="man-minutos" value="8" min="1" max="120" />
+                </div>
+                <div class="form-group">
+                  <label for="man-distancia">Distancia / Ritmo / Nivel</label>
+                  <input type="text" id="man-distancia" placeholder="Ej: 1800m, inclinación 7%, Zona 2" />
+                </div>
+                <div class="form-group">
+                  <label for="man-rpe-c">RPE (1 - 10)</label>
+                  <input type="number" id="man-rpe-c" value="8" step="0.5" min="1" max="10" />
+                </div>
+              </div>
+
+              <input type="hidden" id="man-rutina-id" value="" />
+              <button type="button" class="btn btn-secondary" id="btn-registrar-manual">Guardar Registro Manual</button>
+            </div>
+          </details>
+
+          <div id="feedback-registro" class="feedback-box" style="display:none;"></div>
+        </div>
+
+        <!-- TABLA BITÁCORA Y EXPORTACIÓN CSV -->
+        <div class="card">
+          <h2>
+            <span>Historial Reciente</span>
+            <button type="button" class="btn btn-secondary btn-sm" id="btn-export-csv">Exportar Bitácora (.CSV)</button>
+          </h2>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Fecha</th>
+                  <th>Ejercicio</th>
+                  <th>Detalle (Sets / Tiempo)</th>
+                  <th>Carga / Dist.</th>
+                  <th>RPE</th>
+                </tr>
+              </thead>
+              <tbody id="tabla-historial"></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- =========================================================================
+       MODAL MINIMALISTA DE GUÍA TÉCNICA (SVG + 3 VIÑETAS + ENLACE YOUTUBE)
+       ========================================================================= -->
+  <div class="modal-backdrop" id="guide-modal" role="dialog" aria-modal="true" aria-labelledby="modal-ex-title">
+    <div class="modal-card">
+      <div class="modal-header">
+        <div>
+          <div style="font-size:0.68rem; text-transform:uppercase; letter-spacing:0.08em; color:var(--gold); font-weight:700;">Guía Técnica Minimalista</div>
+          <div class="modal-title" id="modal-ex-title">Ejercicio</div>
+        </div>
+        <button type="button" class="modal-close" id="btn-close-modal" aria-label="Cerrar">×</button>
+      </div>
+
+      <div class="svg-stage">
+        <div id="modal-svg-container"></div>
+        <div class="svg-caption">Trazo dorado: posición inicial · Trazo burdeos: fase final</div>
+      </div>
+
+      <ul class="guide-bullets" id="modal-bullets"></ul>
+
+      <div class="modal-footer">
+        <a id="modal-yt-link" class="yt-link" href="#" target="_blank" rel="noopener noreferrer">Ver ejemplo corto ↗</a>
+        <button type="button" class="btn btn-secondary btn-sm" id="btn-close-modal-footer">Cerrar</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- =========================================================================
+       CRONÓMETRO FLOTANTE DE DESCANSO
+       ========================================================================= -->
+  <div class="timer-bar">
+    <div style="display:flex; align-items:center; gap:0.5rem;">
+      <span style="font-size:0.72rem; text-transform:uppercase; letter-spacing:0.05em; color:var(--gold-soft);">Descanso:</span>
+      <span class="timer-display" id="timer-display">00:00</span>
+    </div>
+    <div class="timer-controls">
+      <button type="button" class="timer-btn" data-sec="30">30s</button>
+      <button type="button" class="timer-btn" data-sec="60">60s</button>
+      <button type="button" class="timer-btn" data-sec="75">75s</button>
+      <button type="button" class="timer-btn" data-sec="90">90s</button>
+      <button type="button" class="timer-btn" id="timer-stop">■</button>
+    </div>
+  </div>
+
+  <script>
+    // =========================================================================
+    // 1. UTILIDADES DE FECHA LOCAL (SIN DESFASE UTC)
+    // =========================================================================
+    function getLocalISODate(dateObj = new Date()) {
+      const y = dateObj.getFullYear();
+      const m = String(dateObj.getMonth() + 1).padStart(2, "0");
+      const d = String(dateObj.getDate()).padStart(2, "0");
+      return `${y}-${m}-${d}`;
+    }
+
+    function parseLocalDate(isoStr) {
+      const [y, m, d] = isoStr.split("-").map(Number);
+      return new Date(y, m - 1, d);
+    }
+
+    const HOY_ISO = getLocalISODate();
+    const NOMBRES_DIAS = ["Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado", "Domingo"];
+    const NOMBRES_MESES = [
+      "Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio",
+      "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"
+    ];
+
+    // =========================================================================
+    // 2. DIAGRAMAS SVG LINEALES MINIMALISTAS Y VIÑETAS DE GUÍA TÉCNICA
+    // =========================================================================
+    const EXERCISE_GUIDES = {
+      "Press de banca con barra": {
+        svg: `<svg width="210" height="96" viewBox="0 0 210 96" fill="none">
+          <line x1="35" y1="74" x2="175" y2="74" stroke="#685952" stroke-width="3" stroke-linecap="round"/>
+          <line x1="55" y1="74" x2="55" y2="88" stroke="#685952" stroke-width="3"/>
+          <line x1="155" y1="74" x2="155" y2="88" stroke="#685952" stroke-width="3"/>
+          <circle cx="62" cy="64" r="7" stroke="#5C1616" stroke-width="2"/>
+          <line x1="69" y1="67" x2="132" y2="67" stroke="#5C1616" stroke-width="2.5"/>
+          <polyline points="132,67 152,67 156,86" stroke="#5C1616" stroke-width="2.2" fill="none"/>
+          <line x1="96" y1="67" x2="96" y2="50" stroke="#B8860B" stroke-width="2" stroke-dasharray="3 2"/>
+          <line x1="80" y1="50" x2="112" y2="50" stroke="#B8860B" stroke-width="2.5"/>
+          <line x1="96" y1="67" x2="96" y2="24" stroke="#5C1616" stroke-width="2.4"/>
+          <line x1="76" y1="24" x2="116" y2="24" stroke="#5C1616" stroke-width="3" stroke-linecap="round"/>
+        </svg>`,
+        bullets: [
+          "<strong>Posición inicial:</strong> Escápulas retraídas contra el banco, pies firmes y agarre ligeramente más ancho que hombros.",
+          "<strong>Ejecución:</strong> Desciende la barra controlada hasta el esternón medio y empuja en vertical sin despegar glúteos.",
+          "<strong>Punto clave:</strong> Mantén codos a ~45° respecto al torso para proteger la articulación del hombro."
+        ]
+      },
+      "Remo inclinado con barra": {
+        svg: `<svg width="210" height="96" viewBox="0 0 210 96" fill="none">
+          <line x1="30" y1="88" x2="180" y2="88" stroke="#DCD3C1" stroke-width="1.5"/>
+          <polyline points="82,88 92,60 132,42" stroke="#5C1616" stroke-width="2.5" fill="none"/>
+          <circle cx="141" cy="38" r="7" stroke="#5C1616" stroke-width="2"/>
+          <line x1="124" y1="46" x2="124" y2="76" stroke="#B8860B" stroke-width="2" stroke-dasharray="3 2"/>
+          <line x1="110" y1="76" x2="138" y2="76" stroke="#B8860B" stroke-width="2.5"/>
+          <polyline points="124,46 112,56 118,62" stroke="#5C1616" stroke-width="2.4" fill="none"/>
+          <line x1="104" y1="62" x2="132" y2="62" stroke="#5C1616" stroke-width="3" stroke-linecap="round"/>
+        </svg>`,
+        bullets: [
+          "<strong>Posición inicial:</strong> Bisagra de cadera con torso inclinado a ~45°, columna neutra y rodillas semidobladas.",
+          "<strong>Ejecución:</strong> Tracciona la barra hacia el ombligo juntando escápulas y desciende sin perder postura lumbar.",
+          "<strong>Punto clave:</strong> Evita dar tirones con la espalda baja; inicia el movimiento desde los codos."
+        ]
+      },
+      "Press militar de pie con barra": {
+        svg: `<svg width="210" height="96" viewBox="0 0 210 96" fill="none">
+          <line x1="40" y1="90" x2="170" y2="90" stroke="#DCD3C1" stroke-width="1.5"/>
+          <line x1="105" y1="90" x2="105" y2="42" stroke="#5C1616" stroke-width="2.5"/>
+          <circle cx="105" cy="33" r="6.5" stroke="#5C1616" stroke-width="2"/>
+          <line x1="88" y1="44" x2="122" y2="44" stroke="#B8860B" stroke-width="2.2" stroke-dasharray="3 2"/>
+          <polyline points="105,44 92,30 92,14" stroke="#5C1616" stroke-width="2" fill="none"/>
+          <polyline points="105,44 118,30 118,14" stroke="#5C1616" stroke-width="2" fill="none"/>
+          <line x1="82" y1="14" x2="128" y2="14" stroke="#5C1616" stroke-width="3" stroke-linecap="round"/>
+        </svg>`,
+        bullets: [
+          "<strong>Posición inicial:</strong> De pie, barra apoyada sobre clavículas, glúteos y abdomen firmemente contraídos.",
+          "<strong>Ejecución:</strong> Empuja la barra en línea recta sobre la cabeza adelantando levemente el pecho al pasar la frente.",
+          "<strong>Punto clave:</strong> No hiperextiendas la zona lumbar al bloquear los brazos arriba."
+        ]
+      },
+      "Dominadas en barra": {
+        svg: `<svg width="210" height="96" viewBox="0 0 210 96" fill="none">
+          <line x1="50" y1="12" x2="160" y2="12" stroke="#685952" stroke-width="3.5" stroke-linecap="round"/>
+          <line x1="92" y1="12" x2="96" y2="44" stroke="#B8860B" stroke-width="1.8" stroke-dasharray="3 2"/>
+          <line x1="118" y1="12" x2="114" y2="44" stroke="#B8860B" stroke-width="1.8" stroke-dasharray="3 2"/>
+          <line x1="105" y1="46" x2="105" y2="86" stroke="#B8860B" stroke-width="1.8" stroke-dasharray="3 2"/>
+          <polyline points="90,12 86,26 105,28" stroke="#5C1616" stroke-width="2.2" fill="none"/>
+          <polyline points="120,12 124,26 105,28" stroke="#5C1616" stroke-width="2.2" fill="none"/>
+          <circle cx="105" cy="18" r="6" stroke="#5C1616" stroke-width="2"/>
+          <line x1="105" y1="28" x2="105" y2="66" stroke="#5C1616" stroke-width="2.5"/>
+        </svg>`,
+        bullets: [
+          "<strong>Posición inicial:</strong> Cuelgue activo con agarre prono, hombros lejos de las orejas (depresión escapular).",
+          "<strong>Ejecución:</strong> Sube llevando el pecho hacia la barra (3-4 reps) y añade 2 bajadas excéntricas lentas de 4 segundos.",
+          "<strong>Punto clave:</strong> Controla todo el descenso sin dejarte caer de golpe al final del recorrido."
+        ]
+      },
+      "Remo ergómetro intervalos 30s fuerte / 30s suave": {
+        svg: `<svg width="210" height="96" viewBox="0 0 210 96" fill="none">
+          <line x1="25" y1="82" x2="185" y2="82" stroke="#685952" stroke-width="3" stroke-linecap="round"/>
+          <line x1="155" y1="82" x2="168" y2="54" stroke="#685952" stroke-width="3"/>
+          <polyline points="118,76 136,64 156,74" stroke="#B8860B" stroke-width="2" stroke-dasharray="3 2" fill="none"/>
+          <line x1="118" y1="76" x2="128" y2="50" stroke="#B8860B" stroke-width="2" stroke-dasharray="3 2"/>
+          <polyline points="82,76 118,76 154,74" stroke="#5C1616" stroke-width="2.4" fill="none"/>
+          <line x1="82" y1="76" x2="68" y2="48" stroke="#5C1616" stroke-width="2.5"/>
+          <circle cx="64" cy="39" r="6.5" stroke="#5C1616" stroke-width="2"/>
+          <line x1="72" y1="54" x2="108" y2="56" stroke="#5C1616" stroke-width="2.2"/>
+        </svg>`,
+        bullets: [
+          "<strong>Posición inicial:</strong> Espalda erguida, espinillas verticales y brazos extendidos al frente antes de empujar.",
+          "<strong>Ejecución:</strong> Secuencia fluida: 1° empuje de piernas, 2° inclinación leve de torso, 3° tirón de brazos al esternón.",
+          "<strong>Punto clave:</strong> Invierte el orden al volver (brazos → torso → piernas) durante 30s intensos / 30s suaves."
+        ]
+      },
+      "Sentadilla trasera con barra": {
+        svg: `<svg width="210" height="96" viewBox="0 0 210 96" fill="none">
+          <line x1="40" y1="88" x2="170" y2="88" stroke="#DCD3C1" stroke-width="1.5"/>
+          <line x1="92" y1="88" x2="92" y2="30" stroke="#B8860B" stroke-width="2" stroke-dasharray="3 2"/>
+          <circle cx="92" cy="21" r="6" stroke="#B8860B" stroke-width="1.8" stroke-dasharray="3 2"/>
+          <polyline points="96,88 114,66 86,62 96,40" stroke="#5C1616" stroke-width="2.5" fill="none"/>
+          <circle cx="99" cy="31" r="6.5" stroke="#5C1616" stroke-width="2"/>
+          <line x1="82" y1="39" x2="112" y2="39" stroke="#5C1616" stroke-width="3" stroke-linecap="round"/>
+        </svg>`,
+        bullets: [
+          "<strong>Posición inicial:</strong> Barra apoyada sobre trapecios, pies al ancho de hombros y puntas levemente hacia afuera.",
+          "<strong>Ejecución:</strong> Desciende flexionando cadera y rodillas en simultáneo hasta romper el paralelo y sube con firmeza.",
+          "<strong>Punto clave:</strong> Mantén las rodillas alineadas con la punta de los pies y el pecho alto."
+        ]
+      },
+      "Rueda abdominal (Ab Wheel)": {
+        svg: `<svg width="210" height="96" viewBox="0 0 210 96" fill="none">
+          <line x1="25" y1="84" x2="185" y2="84" stroke="#DCD3C1" stroke-width="1.5"/>
+          <polyline points="55,84 55,66 78,46" stroke="#B8860B" stroke-width="2" stroke-dasharray="3 2" fill="none"/>
+          <circle cx="88" cy="76" r="7" stroke="#B8860B" stroke-width="1.8" stroke-dasharray="3 2"/>
+          <polyline points="42,84 56,74 128,68" stroke="#5C1616" stroke-width="2.5" fill="none"/>
+          <circle cx="137" cy="64" r="6" stroke="#5C1616" stroke-width="2"/>
+          <line x1="124" y1="68" x2="152" y2="76" stroke="#5C1616" stroke-width="2.2"/>
+          <circle cx="155" cy="76" r="7.5" stroke="#5C1616" stroke-width="2.2"/>
+        </svg>`,
+        bullets: [
+          "<strong>Posición inicial:</strong> De rodillas sobre colchoneta, glúteos apretados y pelvis en retroversión (abdomen firme).",
+          "<strong>Ejecución:</strong> Rueda hacia adelante manteniendo los brazos extendidos hasta donde controles la zona lumbar y regresa.",
+          "<strong>Punto clave:</strong> Detén el avance de inmediato si sientes que la espalda baja comienza a arquearse."
+        ]
+      },
+      "Zancadas búlgaras con mancuernas": {
+        svg: `<svg width="210" height="96" viewBox="0 0 210 96" fill="none">
+          <rect x="40" y="64" width="28" height="24" stroke="#685952" stroke-width="2"/>
+          <line x1="30" y1="88" x2="180" y2="88" stroke="#DCD3C1" stroke-width="1.5"/>
+          <polyline points="56,64 82,76 98,58" stroke="#5C1616" stroke-width="2.2" fill="none"/>
+          <polyline points="98,58 134,62 134,88" stroke="#5C1616" stroke-width="2.5" fill="none"/>
+          <line x1="98" y1="58" x2="104" y2="30" stroke="#5C1616" stroke-width="2.5"/>
+          <circle cx="105" cy="21" r="6" stroke="#5C1616" stroke-width="2"/>
+          <line x1="102" y1="36" x2="102" y2="62" stroke="#B8860B" stroke-width="2"/>
+          <rect x="96" y="61" width="12" height="5" fill="#B8860B"/>
+        </svg>`,
+        bullets: [
+          "<strong>Posición inicial:</strong> Empeine trasero apoyado en banco y pie delantero adelantado lo suficiente para bajar vertical.",
+          "<strong>Ejecución:</strong> Desciende llevando la rodilla trasera hacia el suelo con ligera inclinación de torso y empuja con el talón delantero.",
+          "<strong>Punto clave:</strong> Evita que la rodilla delantera colapse hacia adentro durante la subida."
+        ]
+      },
+      "Curl femoral deslizante en TRX": {
+        svg: `<svg width="210" height="96" viewBox="0 0 210 96" fill="none">
+          <line x1="168" y1="10" x2="156" y2="68" stroke="#685952" stroke-width="2"/>
+          <line x1="30" y1="84" x2="180" y2="84" stroke="#DCD3C1" stroke-width="1.5"/>
+          <circle cx="48" cy="76" r="6" stroke="#5C1616" stroke-width="2"/>
+          <line x1="55" y1="80" x2="156" y2="70" stroke="#B8860B" stroke-width="2" stroke-dasharray="3 2"/>
+          <polyline points="55,80 96,66 124,52 146,72" stroke="#5C1616" stroke-width="2.5" fill="none"/>
+        </svg>`,
+        bullets: [
+          "<strong>Posición inicial:</strong> Acostado boca arriba con talones dentro de los estribos del TRX y cadera elevada en puente.",
+          "<strong>Ejecución:</strong> Flexiona las rodillas arrastrando los talones hacia los glúteos mientras elevas más la cadera.",
+          "<strong>Punto clave:</strong> Mantén los glúteos activos todo el tiempo sin apoyar la cadera en el suelo entre repeticiones."
+        ]
+      },
+      "Bicicleta estática intervalos de potencia 20s/40s": {
+        svg: `<svg width="210" height="96" viewBox="0 0 210 96" fill="none">
+          <circle cx="72" cy="72" r="14" stroke="#685952" stroke-width="2.2"/>
+          <circle cx="138" cy="72" r="14" stroke="#685952" stroke-width="2.2"/>
+          <polyline points="72,72 98,52 128,52 138,72" stroke="#685952" stroke-width="2" fill="none"/>
+          <line x1="128" y1="52" x2="122" y2="34" stroke="#685952" stroke-width="2.2"/>
+          <line x1="94" y1="46" x2="116" y2="34" stroke="#5C1616" stroke-width="2.5"/>
+          <circle cx="121" cy="26" r="6" stroke="#5C1616" stroke-width="2"/>
+          <polyline points="94,46 108,60 102,74" stroke="#5C1616" stroke-width="2.2" fill="none"/>
+        </svg>`,
+        bullets: [
+          "<strong>Posición inicial:</strong> Sillín a la altura de la cadera (rodilla con leve flexión al punto más bajo del pedal).",
+          "<strong>Ejecución:</strong> Alterna 20 segundos de sprint a máxima cadencia/resistencia con 40 segundos de pedaleo suave.",
+          "<strong>Punto clave:</strong> Mantén los hombros relajados sin balancear excesivamente el tronco."
+        ]
+      },
+      "Trotadora caminata rápida inclinada o trote suave (Zona 2)": {
+        svg: `<svg width="210" height="96" viewBox="0 0 210 96" fill="none">
+          <line x1="45" y1="84" x2="165" y2="70" stroke="#685952" stroke-width="3.5" stroke-linecap="round"/>
+          <line x1="152" y1="72" x2="146" y2="34" stroke="#685952" stroke-width="2.5"/>
+          <line x1="102" y1="56" x2="106" y2="28" stroke="#5C1616" stroke-width="2.5"/>
+          <circle cx="107" cy="19" r="6" stroke="#5C1616" stroke-width="2"/>
+          <polyline points="86,78 102,56 122,74" stroke="#5C1616" stroke-width="2.3" fill="none"/>
+          <polyline points="92,38 105,44 118,36" stroke="#B8860B" stroke-width="2" fill="none"/>
+        </svg>`,
+        bullets: [
+          "<strong>Posición inicial:</strong> Postura erguida, mirada al frente e inclinación moderada (5-8% si caminas, 1-2% si trotas).",
+          "<strong>Ejecución:</strong> Mantén un ritmo aeróbico continuo durante 20 minutos a intensidad conversacional (RPE 6-7).",
+          "<strong>Punto clave:</strong> Evita sujetarte de los pasamanos laterales para no reducir el gasto metabólico."
+        ]
+      },
+      "Plancha abdominal / TRX Fallout": {
+        svg: `<svg width="210" height="96" viewBox="0 0 210 96" fill="none">
+          <line x1="145" y1="8" x2="136" y2="58" stroke="#685952" stroke-width="2"/>
+          <line x1="30" y1="84" x2="180" y2="84" stroke="#DCD3C1" stroke-width="1.5"/>
+          <line x1="56" y1="84" x2="92" y2="44" stroke="#B8860B" stroke-width="2" stroke-dasharray="3 2"/>
+          <line x1="48" y1="84" x2="118" y2="54" stroke="#5C1616" stroke-width="2.5"/>
+          <circle cx="126" cy="48" r="6" stroke="#5C1616" stroke-width="2"/>
+          <line x1="114" y1="54" x2="144" y2="60" stroke="#5C1616" stroke-width="2.2"/>
+        </svg>`,
+        bullets: [
+          "<strong>Posición inicial:</strong> De pie inclinado tomando las asas del TRX con brazos al frente y cuerpo alineado.",
+          "<strong>Ejecución:</strong> Eleva los brazos por encima de la cabeza dejando caer el cuerpo en bloque sin quebrar la cintura.",
+          "<strong>Punto clave:</strong> Aprieta glúteos y costillas abajo antes de iniciar cada repetición."
+        ]
+      },
+      "Hip Thrust con barra en banco": {
+        svg: `<svg width="210" height="96" viewBox="0 0 210 96" fill="none">
+          <rect x="36" y="54" width="28" height="34" stroke="#685952" stroke-width="2"/>
+          <line x1="25" y1="88" x2="185" y2="88" stroke="#DCD3C1" stroke-width="1.5"/>
+          <polyline points="64,58 96,78 134,62 142,88" stroke="#B8860B" stroke-width="2" stroke-dasharray="3 2" fill="none"/>
+          <polyline points="64,56 102,56 138,56 144,88" stroke="#5C1616" stroke-width="2.5" fill="none"/>
+          <circle cx="56" cy="48" r="6" stroke="#5C1616" stroke-width="2"/>
+          <circle cx="102" cy="50" r="5" fill="#B8860B"/>
+        </svg>`,
+        bullets: [
+          "<strong>Posición inicial:</strong> Borde inferior de escápulas apoyado en el banco, barra acolchada sobre el pliegue de cadera.",
+          "<strong>Ejecución:</strong> Empuja desde los talones hasta alinear rodillas, cadera y hombros con pausa de 1s arriba.",
+          "<strong>Punto clave:</strong> Mantén la barbilla levemente pegada al pecho (mirada al frente) para no arquear la lumbar."
+        ]
+      },
+      "Press inclinado o suelo con mancuernas": {
+        svg: `<svg width="210" height="96" viewBox="0 0 210 96" fill="none">
+          <polyline points="48,86 64,68 112,46" stroke="#685952" stroke-width="3" fill="none"/>
+          <line x1="112" y1="46" x2="112" y2="86" stroke="#685952" stroke-width="2.5"/>
+          <circle cx="116" cy="36" r="6" stroke="#5C1616" stroke-width="2"/>
+          <line x1="72" y1="68" x2="108" y2="48" stroke="#5C1616" stroke-width="2.5"/>
+          <line x1="102" y1="48" x2="102" y2="20" stroke="#5C1616" stroke-width="2.3"/>
+          <rect x="94" y="16" width="16" height="5" fill="#B8860B"/>
+        </svg>`,
+        bullets: [
+          "<strong>Posición inicial:</strong> Banco inclinado a 30° (o en el suelo), mancuernas alineadas con la parte alta del pecho.",
+          "<strong>Ejecución:</strong> Empuja las mancuernas hacia arriba sin chocarlas y desciende controlando en 2-3 segundos.",
+          "<strong>Punto clave:</strong> Mantén los hombros anclados atrás contra el respaldo durante todo el recorrido."
+        ]
+      },
+      "Remo invertido en TRX": {
+        svg: `<svg width="210" height="96" viewBox="0 0 210 96" fill="none">
+          <line x1="110" y1="8" x2="102" y2="52" stroke="#685952" stroke-width="2"/>
+          <line x1="30" y1="86" x2="180" y2="86" stroke="#DCD3C1" stroke-width="1.5"/>
+          <line x1="146" y1="86" x2="84" y2="66" stroke="#B8860B" stroke-width="2" stroke-dasharray="3 2"/>
+          <line x1="146" y1="86" x2="88" y2="48" stroke="#5C1616" stroke-width="2.5"/>
+          <circle cx="79" cy="44" r="6" stroke="#5C1616" stroke-width="2"/>
+          <polyline points="94,50 104,54 102,46" stroke="#5C1616" stroke-width="2" fill="none"/>
+        </svg>`,
+        bullets: [
+          "<strong>Posición inicial:</strong> Cuerpo en plancha invertida suspendido del TRX, talones apoyados y abdomen firme.",
+          "<strong>Ejecución:</strong> Tracciona llevando las manos hacia las costillas y juntando escápulas con pausa breve arriba.",
+          "<strong>Punto clave:</strong> Regula la dificultad adelantando o atrasando los pies sin perder la línea recta del cuerpo."
+        ]
+      },
+      "Peso muerto rumano con mancuernas o barra": {
+        svg: `<svg width="210" height="96" viewBox="0 0 210 96" fill="none">
+          <line x1="40" y1="88" x2="170" y2="88" stroke="#DCD3C1" stroke-width="1.5"/>
+          <line x1="94" y1="88" x2="94" y2="32" stroke="#B8860B" stroke-width="2" stroke-dasharray="3 2"/>
+          <polyline points="92,88 86,58 134,46" stroke="#5C1616" stroke-width="2.5" fill="none"/>
+          <circle cx="143" cy="44" r="6" stroke="#5C1616" stroke-width="2"/>
+          <line x1="126" y1="48" x2="122" y2="74" stroke="#5C1616" stroke-width="2.2"/>
+          <rect x="114" y="73" width="16" height="5" fill="#B8860B"/>
+        </svg>`,
+        bullets: [
+          "<strong>Posición inicial:</strong> De pie, rodillas desbloqueadas (~15° fijos) y carga pegada a los muslos.",
+          "<strong>Ejecución:</strong> Empuja la cadera hacia atrás manteniendo la espalda plana hasta sentir estiramiento en isquiosurales.",
+          "<strong>Punto clave:</strong> Baja solo hasta donde tu cadera deje de retroceder; sube contrayendo glúteos."
+        ]
+      },
+      "Trotadora intervalos 1 min rápido / 1 min caminata": {
+        svg: `<svg width="210" height="96" viewBox="0 0 210 96" fill="none">
+          <line x1="45" y1="82" x2="165" y2="82" stroke="#685952" stroke-width="3.5" stroke-linecap="round"/>
+          <line x1="152" y1="82" x2="148" y2="38" stroke="#685952" stroke-width="2.5"/>
+          <line x1="100" y1="56" x2="112" y2="28" stroke="#5C1616" stroke-width="2.5"/>
+          <circle cx="115" cy="19" r="6" stroke="#5C1616" stroke-width="2"/>
+          <polyline points="78,74 100,56 124,68 130,80" stroke="#5C1616" stroke-width="2.3" fill="none"/>
+          <polyline points="90,36 108,44 124,34" stroke="#B8860B" stroke-width="2" fill="none"/>
+        </svg>`,
+        bullets: [
+          "<strong>Posición inicial:</strong> Zancada ágil, braceo activo y torso levemente inclinado hacia adelante.",
+          "<strong>Ejecución:</strong> Completa 5 rondas de 1 minuto de carrera rápida (RPE 8-8.5) por 1 minuto de caminata de recuperación.",
+          "<strong>Punto clave:</strong> Aterriza suave bajo tu centro de gravedad para minimizar el impacto articular."
+        ]
+      }
+    };
+
+    // =========================================================================
+    // 3. BASE DE DATOS INICIAL (SEED DATA)
+    // =========================================================================
+    const DEFAULT_DB = {
+      Perfil_Usuario: [
+        {
+          usuario_id: "usr_001",
+          nombre: "Mauricio",
+          estatura_cm: 167,
+          peso_actual_kg: 80.0,
+          nivel_experiencia: "Intermedio",
+          objetivo_principal: "Pérdida de Grasa y Desempeño",
+          dias_semana_objetivo: 4,
+          duracion_sesion_min: 30,
+          equipamiento_disponible: [
+            "Rack sentadilla", "Barra", "Discos", "Banco plano", "Banco hip thrust",
+            "Mancuernas", "Barra dominadas", "TRX", "Rueda abdominal",
+            "Trotadora", "Remo ergómetro", "Bicicleta estática"
+          ],
+          meta_mensual_texto: "Completar 16 sesiones, bajar a 78.5 kg y lograr 5 dominadas estrictas",
+          meta_sesiones_objetivo: 16
+        }
+      ],
+      Perfiles_Dia: [
+        {
+          dia_codigo: "DIA_1",
+          etiqueta_corta: "Día 1",
+          perfil_enfoque: "Fuerza Torso + Remo HIIT",
+          objetivo_sesion: "Empuje/tracción con RIR 2, progresión en dominadas e intervalos en remo."
+        },
+        {
+          dia_codigo: "DIA_2",
+          etiqueta_corta: "Día 2",
+          perfil_enfoque: "Pierna/Core + Bici Sprint",
+          objetivo_sesion: "Dominancia de rodilla, estabilidad central y sprints cortos en bicicleta."
+        },
+        {
+          dia_codigo: "DIA_3",
+          etiqueta_corta: "Día 3",
+          perfil_enfoque: "Cardio Zona 2 + Core",
+          objetivo_sesion: "Base aeróbica constante en trotadora y estabilidad lumbopélvica."
+        },
+        {
+          dia_codigo: "DIA_4",
+          etiqueta_corta: "Día 4",
+          perfil_enfoque: "Full Body Densidad + Trotadora HIIT",
+          objetivo_sesion: "Superseries globales y remate cardiovascular interválico."
+        }
+      ],
+      // Mapeo de los 7 días de la semana (0=Lunes ... 6=Domingo)
+      Distribucion_Semanal: {
+        0: "DIA_1", // Lunes
+        1: "DIA_2", // Martes
+        2: "LIBRE", // Miércoles
+        3: "DIA_3", // Jueves
+        4: "DIA_4", // Viernes
+        5: "LIBRE", // Sábado
+        6: "LIBRE"  // Domingo
+      },
+      Rutinas_Planificadas: [
+        // DÍA 1
+        { rutina_item_id: "rut_d1_a1", dia_codigo: "DIA_1", orden_bloque: "A1", tipo: "fuerza", ejercicio_nombre: "Press de banca con barra", series: 3, reps_texto: "8-10", reps_min: 8, reps_max: 10, descanso_texto: "Superserie", descanso_seg: 0, duracion_min: 0 },
+        { rutina_item_id: "rut_d1_a2", dia_codigo: "DIA_1", orden_bloque: "A2", tipo: "fuerza", ejercicio_nombre: "Remo inclinado con barra", series: 3, reps_texto: "8-10", reps_min: 8, reps_max: 10, descanso_texto: "90s", descanso_seg: 90, duracion_min: 0 },
+        { rutina_item_id: "rut_d1_b1", dia_codigo: "DIA_1", orden_bloque: "B1", tipo: "fuerza", ejercicio_nombre: "Press militar de pie con barra", series: 3, reps_texto: "10-12", reps_min: 10, reps_max: 12, descanso_texto: "Superserie", descanso_seg: 0, duracion_min: 0 },
+        { rutina_item_id: "rut_d1_b2", dia_codigo: "DIA_1", orden_bloque: "B2", tipo: "fuerza", ejercicio_nombre: "Dominadas en barra", series: 3, reps_texto: "3-4 estrictas + 2 exc. (4s)", reps_min: 3, reps_max: 5, descanso_texto: "90s", descanso_seg: 90, duracion_min: 0 },
+        { rutina_item_id: "rut_d1_c1", dia_codigo: "DIA_1", orden_bloque: "C1", tipo: "cardio", ejercicio_nombre: "Remo ergómetro intervalos 30s fuerte / 30s suave", series: 1, reps_texto: "8 min", reps_min: 8, reps_max: 8, descanso_texto: "Continuo", descanso_seg: 0, duracion_min: 8 },
+
+        // DÍA 2
+        { rutina_item_id: "rut_d2_a1", dia_codigo: "DIA_2", orden_bloque: "A1", tipo: "fuerza", ejercicio_nombre: "Sentadilla trasera con barra", series: 3, reps_texto: "8-10", reps_min: 8, reps_max: 10, descanso_texto: "Superserie", descanso_seg: 0, duracion_min: 0 },
+        { rutina_item_id: "rut_d2_a2", dia_codigo: "DIA_2", orden_bloque: "A2", tipo: "fuerza", ejercicio_nombre: "Rueda abdominal (Ab Wheel)", series: 3, reps_texto: "8-12", reps_min: 8, reps_max: 12, descanso_texto: "90s", descanso_seg: 90, duracion_min: 0 },
+        { rutina_item_id: "rut_d2_b1", dia_codigo: "DIA_2", orden_bloque: "B1", tipo: "fuerza", ejercicio_nombre: "Zancadas búlgaras con mancuernas", series: 3, reps_texto: "10-12", reps_min: 10, reps_max: 12, descanso_texto: "Superserie", descanso_seg: 0, duracion_min: 0 },
+        { rutina_item_id: "rut_d2_b2", dia_codigo: "DIA_2", orden_bloque: "B2", tipo: "fuerza", ejercicio_nombre: "Curl femoral deslizante en TRX", series: 3, reps_texto: "12-15", reps_min: 12, reps_max: 15, descanso_texto: "75s", descanso_seg: 75, duracion_min: 0 },
+        { rutina_item_id: "rut_d2_c1", dia_codigo: "DIA_2", orden_bloque: "C1", tipo: "cardio", ejercicio_nombre: "Bicicleta estática intervalos de potencia 20s/40s", series: 1, reps_texto: "8 min", reps_min: 8, reps_max: 8, descanso_texto: "Continuo", descanso_seg: 0, duracion_min: 8 },
+
+        // DÍA 3
+        { rutina_item_id: "rut_d3_a1", dia_codigo: "DIA_3", orden_bloque: "A1", tipo: "cardio", ejercicio_nombre: "Trotadora caminata rápida inclinada o trote suave (Zona 2)", series: 1, reps_texto: "20 min · RPE 6-7", reps_min: 20, reps_max: 20, descanso_texto: "Continuo", descanso_seg: 0, duracion_min: 20 },
+        { rutina_item_id: "rut_d3_b1", dia_codigo: "DIA_3", orden_bloque: "B1", tipo: "fuerza", ejercicio_nombre: "Plancha abdominal / TRX Fallout", series: 3, reps_texto: "12", reps_min: 12, reps_max: 12, descanso_texto: "Superserie", descanso_seg: 0, duracion_min: 0 },
+        { rutina_item_id: "rut_d3_b2", dia_codigo: "DIA_3", orden_bloque: "B2", tipo: "fuerza", ejercicio_nombre: "Hip Thrust con barra en banco", series: 3, reps_texto: "10-12", reps_min: 10, reps_max: 12, descanso_texto: "60s", descanso_seg: 60, duracion_min: 0 },
+
+        // DÍA 4
+        { rutina_item_id: "rut_d4_a1", dia_codigo: "DIA_4", orden_bloque: "A1", tipo: "fuerza", ejercicio_nombre: "Press inclinado o suelo con mancuernas", series: 3, reps_texto: "10-12", reps_min: 10, reps_max: 12, descanso_texto: "Superserie", descanso_seg: 0, duracion_min: 0 },
+        { rutina_item_id: "rut_d4_a2", dia_codigo: "DIA_4", orden_bloque: "A2", tipo: "fuerza", ejercicio_nombre: "Remo invertido en TRX", series: 3, reps_texto: "10-12", reps_min: 10, reps_max: 12, descanso_texto: "60s", descanso_seg: 60, duracion_min: 0 },
+        { rutina_item_id: "rut_d4_b1", dia_codigo: "DIA_4", orden_bloque: "B1", tipo: "fuerza", ejercicio_nombre: "Peso muerto rumano con mancuernas o barra", series: 3, reps_texto: "10", reps_min: 10, reps_max: 10, descanso_texto: "Superserie", descanso_seg: 0, duracion_min: 0 },
+        { rutina_item_id: "rut_d4_b2", dia_codigo: "DIA_4", orden_bloque: "B2", tipo: "cardio", ejercicio_nombre: "Trotadora intervalos 1 min rápido / 1 min caminata", series: 1, reps_texto: "10 min", reps_min: 10, reps_max: 10, descanso_texto: "Continuo", descanso_seg: 0, duracion_min: 10 }
+      ],
+      CheckIn_Diario: [],
+      Registro_Sesiones: []
+    };
+
+    // =========================================================================
+    // 4. CAPA DE PERSISTENCIA (LOCALSTORAGE)
+    // =========================================================================
+    class StorageManager {
+      constructor(key = "askesis_templo_disciplina_v2") {
+        this.key = key;
+        this._init();
+      }
+      _init() {
+        const raw = localStorage.getItem(this.key);
+        if (!raw) {
+          localStorage.setItem(this.key, JSON.stringify(DEFAULT_DB));
+        }
+      }
+      read() {
+        return JSON.parse(localStorage.getItem(this.key));
+      }
+      write(db) {
+        localStorage.setItem(this.key, JSON.stringify(db));
+      }
+      reset() {
+        localStorage.setItem(this.key, JSON.stringify(DEFAULT_DB));
+      }
+    }
+
+    const store = new StorageManager();
+
+    // Estado de navegación del calendario y semana visible
+    let mesSeleccionado = HOY_ISO.slice(0, 7); // "YYYY-MM"
+    let fechaReferenciaSemana = HOY_ISO;       // Fecha dentro de la semana de 7 días mostrada
+
+    // =========================================================================
+    // 5. MOTOR INTELIGENTE DE AUTOGESTIÓN (FISIOLOGÍA + CHECK-IN + HISTORIAL)
+    // =========================================================================
+    function obtenerCheckIn(fechaISO) {
+      const db = store.read();
+      return (db.CheckIn_Diario || []).find(c => c.fecha === fechaISO) || null;
+    }
+
+    function evaluarAutogestionEjercicio(itemRutina) {
+      const db = store.read();
+      const checkInHoy = obtenerCheckIn(HOY_ISO);
+      const estadoHoy = checkInHoy ? checkInHoy.estado : "normal";
+
+      const historial = (db.Registro_Sesiones || []).filter(r =>
+        r.rutina_item_id === itemRutina.rutina_item_id ||
+        r.ejercicio.trim().toLowerCase() === itemRutina.ejercicio_nombre.trim().toLowerCase()
+      );
+
+      // --- A. REGLA ESPECIAL DOMINADAS (MÁX ACTUAL: 5) ---
+      const esDominada = itemRutina.rutina_item_id === "rut_d1_b2" ||
+                         itemRutina.ejercicio_nombre.toLowerCase().includes("dominada");
+
+      if (esDominada) {
+        if (estadoHoy === "fatigado") {
+          return {
+            clase: "auto-fatiga",
+            texto: "Fatiga hoy: reemplazar por 3 x 10 remos invertidos en TRX.",
+            prefill: "Remo invertido en TRX 3x10 0kg RPE 7.5"
+          };
+        }
+        if (historial.length === 0) {
+          return {
+            clase: "auto-calibrar",
+            texto: "Base: 3 x 3-4 estrictas + 2 excéntricas lentas (4s).",
+            prefill: "Dominadas en barra 3x4 0kg RPE 8"
+          };
+        }
+        const ultimo = historial[historial.length - 1];
+        const rpePrev = ultimo.rpe !== null ? Number(ultimo.rpe) : 8;
+        if (ultimo.reps >= 4 && rpePrev <= 8 && estadoHoy === "optimo") {
+          return {
+            clase: "auto-progresar",
+            texto: `¡Listo para meta! Intentar 3 x 5 dominadas estrictas (RPE previo ${rpePrev}).`,
+            prefill: "Dominadas en barra 3x5 0kg RPE 8.5"
+          };
+        }
+        if (ultimo.reps <= 3 || rpePrev >= 9) {
+          return {
+            clase: "auto-mantener",
+            texto: `Mantener 3-4 reps estrictas + completar volumen con remos en TRX.`,
+            prefill: "Dominadas en barra 3x4 0kg RPE 8.5"
+          };
+        }
+        return {
+          clase: "auto-mantener",
+          texto: `Consolidar ${ultimo.reps} reps estrictas + 2 excéntricas de 4s.`,
+          prefill: `Dominadas en barra 3x${ultimo.reps} 0kg RPE 8`
+        };
+      }
+
+      // --- B. REGLA CARDIO / ERGÓMETROS ---
+      if (itemRutina.tipo === "cardio") {
+        if (historial.length === 0) {
+          const ajusteFatiga = estadoHoy === "fatigado" ? " (Hoy fatigado: reducir 2 min a ritmo suave)" : "";
+          return {
+            clase: estadoHoy === "fatigado" ? "auto-fatiga" : "auto-calibrar",
+            texto: `Calibrar ritmo según RPE objetivo${ajusteFatiga}.`,
+            prefill: `${itemRutina.ejercicio_nombre} ${itemRutina.duracion_min}min RPE 7.5`
+          };
+        }
+        const ultimo = historial[historial.length - 1];
+        const minPrev = ultimo.duracion_min || itemRutina.duracion_min;
+        const rpePrev = ultimo.rpe !== null ? Number(ultimo.rpe) : 7.5;
+
+        if (estadoHoy === "fatigado") {
+          const minRed = Math.max(5, minPrev - 2);
+          return {
+            clase: "auto-fatiga",
+            texto: `Hoy fatigado: reducir a ${minRed} min en Zona 2 suave (RPE 5-6).`,
+            prefill: `${itemRutina.ejercicio_nombre} ${minRed}min RPE 6`
+          };
+        }
+        if (rpePrev <= 7 && estadoHoy === "optimo") {
+          return {
+            clase: "auto-progresar",
+            texto: `Óptimo + RPE ${rpePrev}: sumar +1 min (${minPrev + 1} min) o subir resistencia/inclinación.`,
+            prefill: `${itemRutina.ejercicio_nombre} ${minPrev + 1}min RPE 8`
+          };
+        }
+        return {
+          clase: "auto-mantener",
+          texto: `Mantener ${minPrev} min y sostener ritmo constante (RPE previo ${rpePrev}).`,
+          prefill: `${itemRutina.ejercicio_nombre} ${minPrev}min RPE 8`
+        };
+      }
+
+      // --- C. REGLA GENERAL FUERZA ---
+      if (historial.length === 0) {
+        const notaFatiga = estadoHoy === "fatigado" ? " (Hoy fatigado: hacer 2 series)" : "";
+        return {
+          clase: estadoHoy === "fatigado" ? "auto-fatiga" : "auto-calibrar",
+          texto: `Calibrar peso inicial (RPE 7-8)${notaFatiga}.`,
+          prefill: `${itemRutina.ejercicio_nombre} ${estadoHoy === "fatigado" ? 2 : itemRutina.series}x${itemRutina.reps_max} 40kg RPE 8`
+        };
+      }
+
+      const ultimo = historial[historial.length - 1];
+      const pesoPrev = Number(ultimo.peso_kg) || 0;
+      const repsPrev = Number(ultimo.reps) || itemRutina.reps_max;
+      const rpePrev = ultimo.rpe !== null ? Number(ultimo.rpe) : null;
+
+      if (estadoHoy === "fatigado") {
+        const seriesRed = Math.max(1, itemRutina.series - 1);
+        const pesoRed = Math.round((pesoPrev * 0.9) * 2) / 2;
+        const txtPeso = pesoPrev > 0 ? ` o bajar 10% (${pesoRed} kg)` : "";
+        return {
+          clase: "auto-fatiga",
+          texto: `Hoy fatigado: reducir a ${seriesRed} series${txtPeso}.`,
+          prefill: `${itemRutina.ejercicio_nombre} ${seriesRed}x${repsPrev} ${pesoPrev > 0 ? pesoRed : 0}kg RPE 7.5`
+        };
+      }
+
+      if (rpePrev !== null && rpePrev <= 7 && estadoHoy === "optimo") {
+        const nuevoPeso = pesoPrev + 2.5;
+        const nuevasReps = repsPrev + 2;
+        const txt = pesoPrev > 0
+          ? `Subir +2.5 kg (${nuevoPeso} kg) o +2 reps (${nuevasReps})`
+          : `Subir +2 reps (${nuevasReps}) o añadir +2.5 kg`;
+        return {
+          clase: "auto-progresar",
+          texto: `${txt} (RPE previo ${rpePrev}).`,
+          prefill: `${itemRutina.ejercicio_nombre} ${itemRutina.series}x${repsPrev} ${pesoPrev > 0 ? nuevoPeso : 0}kg RPE 8`
+        };
+      }
+
+      if (rpePrev !== null && rpePrev >= 8 && rpePrev <= 9) {
+        return {
+          clase: "auto-mantener",
+          texto: `Mantener ${pesoPrev} kg y buscar mejor técnica (RPE previo ${rpePrev}).`,
+          prefill: `${itemRutina.ejercicio_nombre} ${itemRutina.series}x${repsPrev} ${pesoPrev}kg RPE 8`
+        };
+      }
+
+      return {
+        clase: "auto-mantener",
+        texto: `Mantener ${pesoPrev} kg y consolidar control (${repsPrev} reps previas).`,
+        prefill: `${itemRutina.ejercicio_nombre} ${itemRutina.series}x${repsPrev} ${pesoPrev}kg RPE 8`
+      };
+    }
+
+    // =========================================================================
+    // 6. PESTAÑA 1: FICHA TÉCNICA & META DEL MES
+    // =========================================================================
+    function renderTabFicha() {
+      const db = store.read();
+      const p = db.Perfil_Usuario[0];
+
+      // Calcular sesiones cumplidas en el mes seleccionado (días únicos entrenados)
+      const sesionesMes = new Set(
+        (db.Registro_Sesiones || [])
+          .filter(r => r.fecha.startsWith(mesSeleccionado))
+          .map(r => r.fecha)
+      ).size;
+
+      const objetivoSes = Math.max(1, Number(p.meta_sesiones_objetivo) || 16);
+      const pct = Math.min(100, Math.round((sesionesMes / objetivoSes) * 100));
+      const [anioM, mesM] = mesSeleccionado.split("-").map(Number);
+
+      document.getElementById("meta-mes-nombre").textContent = `${NOMBRES_MESES[mesM - 1]} ${anioM}`;
+      document.getElementById("meta-display-texto").textContent = p.meta_mensual_texto;
+      document.getElementById("meta-progress-bar").style.width = `${pct}%`;
+      document.getElementById("meta-sesiones-texto").textContent = `${sesionesMes} / ${objetivoSes} sesiones cumplidas`;
+      document.getElementById("meta-porcentaje-texto").textContent = `${pct}%`;
+
+      document.getElementById("in-meta-texto").value = p.meta_mensual_texto;
+      document.getElementById("in-meta-sesiones").value = objetivoSes;
+
+      // Datos del Atleta
+      document.getElementById("ficha-datos-grid").innerHTML = `
+        <div class="ficha-item"><div class="ficha-item-lbl">Atleta</div><div class="ficha-item-val">${p.nombre}</div></div>
+        <div class="ficha-item"><div class="ficha-item-lbl">Estatura / Peso</div><div class="ficha-item-val">${p.estatura_cm} cm · ${p.peso_actual_kg} kg</div></div>
+        <div class="ficha-item"><div class="ficha-item-lbl">Nivel</div><div class="ficha-item-val">${p.nivel_experiencia}</div></div>
+        <div class="ficha-item"><div class="ficha-item-lbl">Objetivo</div><div class="ficha-item-val">${p.objetivo_principal}</div></div>
+        <div class="ficha-item"><div class="ficha-item-lbl">Regla Semanal</div><div class="ficha-item-val">${p.dias_semana_objetivo} días/sem · ${p.duracion_sesion_min} min</div></div>
+      `;
+
+      document.getElementById("ficha-equip-tags").innerHTML = p.equipamiento_disponible
+        .map(eq => `<span class="equip-tag">${eq}</span>`).join("");
+
+      // Prellenar formulario edición atleta
+      document.getElementById("pf-nombre").value = p.nombre;
+      document.getElementById("pf-nivel").value = p.nivel_experiencia;
+      document.getElementById("pf-estatura").value = p.estatura_cm;
+      document.getElementById("pf-peso").value = p.peso_actual_kg;
+      document.getElementById("pf-objetivo").value = p.objetivo_principal;
+      document.getElementById("pf-equipo").value = p.equipamiento_disponible.join(", ");
+
+      // Perfiles configurables por día
+      document.getElementById("perfiles-dia-container").innerHTML = db.Perfiles_Dia.map((pd, i) => `
+        <div class="day-config-item" data-codigo="${pd.dia_codigo}">
+          <div style="font-family:var(--font-serif); font-weight:700; color:var(--burgundy); font-size:0.88rem; margin-bottom:0.4rem;">
+            ${pd.etiqueta_corta}
+          </div>
+          <div class="form-grid">
+            <div class="form-group" style="margin-bottom:0.35rem;">
+              <label for="pd-enf-${i}">Perfil / Enfoque del Día</label>
+              <input type="text" id="pd-enf-${i}" class="pd-enfoque" value="${pd.perfil_enfoque}" />
+            </div>
+            <div class="form-group" style="margin-bottom:0.35rem;">
+              <label for="pd-obj-${i}">Objetivo de la Sesión</label>
+              <input type="text" id="pd-obj-${i}" class="pd-objetivo" value="${pd.objetivo_sesion}" />
+            </div>
+          </div>
+        </div>
+      `).join("");
+    }
+
+    document.getElementById("btn-guardar-meta").addEventListener("click", () => {
+      const db = store.read();
+      db.Perfil_Usuario[0].meta_mensual_texto = document.getElementById("in-meta-texto").value.trim() || "Completar 16 sesiones";
+      db.Perfil_Usuario[0].meta_sesiones_objetivo = Math.max(1, Number(document.getElementById("in-meta-sesiones").value) || 16);
+      store.write(db);
+      renderTabFicha();
+      alert("Meta del mes actualizada.");
+    });
+
+    document.getElementById("btn-guardar-perfil").addEventListener("click", () => {
+      const db = store.read();
+      const p = db.Perfil_Usuario[0];
+      p.nombre = document.getElementById("pf-nombre").value.trim() || "Mauricio";
+      p.nivel_experiencia = document.getElementById("pf-nivel").value;
+      p.estatura_cm = Number(document.getElementById("pf-estatura").value) || 167;
+      p.peso_actual_kg = Number(document.getElementById("pf-peso").value) || 80;
+      p.objetivo_principal = document.getElementById("pf-objetivo").value.trim() || "Pérdida de Grasa y Desempeño";
+      p.equipamiento_disponible = document.getElementById("pf-equipo").value.split(",").map(s => s.trim()).filter(Boolean);
+      store.write(db);
+      renderTabFicha();
+      alert("Datos del atleta actualizados.");
+    });
+
+    document.getElementById("btn-guardar-perfiles-dia").addEventListener("click", () => {
+      const db = store.read();
+      document.querySelectorAll("#perfiles-dia-container .day-config-item").forEach(el => {
+        const cod = el.dataset.codigo;
+        const item = db.Perfiles_Dia.find(d => d.dia_codigo === cod);
+        if (item) {
+          item.perfil_enfoque = el.querySelector(".pd-enfoque").value.trim() || item.perfil_enfoque;
+          item.objetivo_sesion = el.querySelector(".pd-objetivo").value.trim() || item.objetivo_sesion;
+        }
+      });
+      store.write(db);
+      renderTabFicha();
+      renderReglaSemanal();
+      alert("Enfoques por día actualizados.");
+    });
+
+    // =========================================================================
+    // 7. PESTAÑA 2: CALENDARIO MENSUAL REAL + REGLA SEMANAL (7 COLUMNAS)
+    // =========================================================================
+    function getMondayOfWeek(isoDateStr) {
+      const d = parseLocalDate(isoDateStr);
+      const day = d.getDay(); // 0=Dom, 1=Lun...
+      const diff = (day === 0 ? -6 : 1 - day);
+      d.setDate(d.getDate() + diff);
+      return d;
+    }
+
+    function renderCalendarioMensual() {
+      const db = store.read();
+      const [year, month] = mesSeleccionado.split("-").map(Number);
+      document.getElementById("selector-mes").value = mesSeleccionado;
+
+      const diasEntrenadosSet = new Set(
+        (db.Registro_Sesiones || []).map(r => r.fecha)
+      );
+
+      const entrenadosEnMes = [...diasEntrenadosSet].filter(f => f.startsWith(mesSeleccionado)).length;
+      document.getElementById("cal-resumen-mes").textContent = `${entrenadosEnMes} días entrenados en ${NOMBRES_MESES[month - 1]}`;
+
+      // Semana actualmente seleccionada (Lunes a Domingo)
+      const lunesSemana = getMondayOfWeek(fechaReferenciaSemana);
+      const fechasSemanaActiva = new Set();
+      for (let i = 0; i < 7; i++) {
+        const tmp = new Date(lunesSemana);
+        tmp.setDate(lunesSemana.getDate() + i);
+        fechasSemanaActiva.add(getLocalISODate(tmp));
+      }
+
+      const firstDay = new Date(year, month - 1, 1);
+      const daysInMonth = new Date(year, month, 0).getDate();
+      // Convertir getDay() (0=Dom..6=Sáb) a índice Lunes=0..Domingo=6
+      const startOffset = (firstDay.getDay() + 6) % 7;
+
+      const grid = document.getElementById("calendario-grid");
+      let html = NOMBRES_DIAS.map(d => `<div class="cal-weekday">${d.slice(0, 3)}</div>`).join("");
+
+      for (let i = 0; i < startOffset; i++) {
+        html += `<div class="cal-cell empty"></div>`;
+      }
+
+      for (let dayNum = 1; dayNum <= daysInMonth; dayNum++) {
+        const dateObj = new Date(year, month - 1, dayNum);
+        const iso = getLocalISODate(dateObj);
+        const weekdayIdx = (dateObj.getDay() + 6) % 7; // 0=Lun..6=Dom
+        const asignacion = db.Distribucion_Semanal[weekdayIdx] || "LIBRE";
+        const isTrained = diasEntrenadosSet.has(iso);
+        const isToday = iso === HOY_ISO;
+        const isSelectedWeek = fechasSemanaActiva.has(iso);
+
+        let statusClass = "status-free";
+        let tagText = "Libre";
+        if (isTrained) {
+          statusClass = "status-trained";
+          tagText = "Completado";
+        } else if (asignacion !== "LIBRE") {
+          statusClass = "status-planned";
+          const pd = db.Perfiles_Dia.find(p => p.dia_codigo === asignacion);
+          tagText = pd ? pd.etiqueta_corta : "Planificado";
+        }
+
+        html += `
+          <div class="cal-cell ${statusClass} ${isToday ? "is-today" : ""} ${isSelectedWeek ? "selected-week" : ""}"
+               onclick="seleccionarSemanaDesdeFecha('${iso}')" title="Clic para ver esta semana en la regla semanal">
+            <div class="cal-day-top">
+              <span>${dayNum}</span>
+              ${isTrained ? `<span class="cal-badge-trained">✓</span>` : ""}
+            </div>
+            <div class="cal-cell-tag">${tagText}</div>
+          </div>
+        `;
+      }
+
+      grid.innerHTML = html;
+    }
+
+    window.seleccionarSemanaDesdeFecha = function(iso) {
+      fechaReferenciaSemana = iso;
+      renderCalendarioMensual();
+      renderReglaSemanal();
+    };
+
+    document.getElementById("selector-mes").addEventListener("change", (e) => {
+      if (!e.target.value) return;
+      mesSeleccionado = e.target.value;
+      // Si el mes seleccionado no contiene fechaReferenciaSemana, apuntar al día 1 del nuevo mes
+      if (!fechaReferenciaSemana.startsWith(mesSeleccionado)) {
+        fechaReferenciaSemana = `${mesSeleccionado}-01`;
+      }
+      renderCalendarioMensual();
+      renderReglaSemanal();
+      renderTabFicha();
+    });
+
+    document.getElementById("btn-mes-prev").addEventListener("click", () => {
+      const [y, m] = mesSeleccionado.split("-").map(Number);
+      const prev = new Date(y, m - 2, 1);
+      mesSeleccionado = getLocalISODate(prev).slice(0, 7);
+      fechaReferenciaSemana = `${mesSeleccionado}-01`;
+      renderCalendarioMensual();
+      renderReglaSemanal();
+      renderTabFicha();
+    });
+
+    document.getElementById("btn-mes-next").addEventListener("click", () => {
+      const [y, m] = mesSeleccionado.split("-").map(Number);
+      const next = new Date(y, m, 1);
+      mesSeleccionado = getLocalISODate(next).slice(0, 7);
+      fechaReferenciaSemana = `${mesSeleccionado}-01`;
+      renderCalendarioMensual();
+      renderReglaSemanal();
+      renderTabFicha();
+    });
+
+    document.getElementById("btn-mes-hoy").addEventListener("click", () => {
+      mesSeleccionado = HOY_ISO.slice(0, 7);
+      fechaReferenciaSemana = HOY_ISO;
+      renderCalendarioMensual();
+      renderReglaSemanal();
+      renderTabFicha();
+    });
+
+    // Reasignación de días activos vs días libres
+    document.getElementById("btn-toggle-asignacion").addEventListener("click", () => {
+      const panel = document.getElementById("panel-reasignar-dias");
+      const visible = panel.style.display !== "none";
+      if (!visible) {
+        const db = store.read();
+        const opciones = [
+          { val: "DIA_1", label: "Día 1 (Torso + Remo)" },
+          { val: "DIA_2", label: "Día 2 (Pierna + Bici)" },
+          { val: "DIA_3", label: "Día 3 (Zona 2 + Core)" },
+          { val: "DIA_4", label: "Día 4 (Full Body + HIIT)" },
+          { val: "LIBRE", label: "DÍA LIBRE" }
+        ];
+        document.getElementById("grid-asignacion-dias").innerHTML = NOMBRES_DIAS.map((nombre, idx) => `
+          <div>
+            <label style="font-size:0.7rem;">${nombre}</label>
+            <select class="sel-asignacion-dia" data-idx="${idx}" style="padding:0.35rem; font-size:0.78rem;">
+              ${opciones.map(o => `<option value="${o.val}" ${db.Distribucion_Semanal[idx] === o.val ? "selected" : ""}>${o.label}</option>`).join("")}
+            </select>
+          </div>
+        `).join("");
+      }
+      panel.style.display = visible ? "none" : "block";
+    });
+
+    document.getElementById("btn-guardar-asignacion").addEventListener("click", () => {
+      const db = store.read();
+      document.querySelectorAll(".sel-asignacion-dia").forEach(sel => {
+        db.Distribucion_Semanal[Number(sel.dataset.idx)] = sel.value;
+      });
+      store.write(db);
+      document.getElementById("panel-reasignar-dias").style.display = "none";
+      renderCalendarioMensual();
+      renderReglaSemanal();
+    });
+
+    function renderReglaSemanal() {
+      const db = store.read();
+      const lunes = getMondayOfWeek(fechaReferenciaSemana);
+      const domingo = new Date(lunes);
+      domingo.setDate(lunes.getDate() + 6);
+
+      document.getElementById("semana-activa-label").textContent =
+        `Semana: ${lunes.getDate()} ${NOMBRES_MESES[lunes.getMonth()].slice(0, 3)} – ${domingo.getDate()} ${NOMBRES_MESES[domingo.getMonth()].slice(0, 3)}`;
+
+      const diasEntrenadosSet = new Set((db.Registro_Sesiones || []).map(r => r.fecha));
+      const container = document.getElementById("week-columns-container");
+
+      container.innerHTML = NOMBRES_DIAS.map((nombreDia, idx) => {
+        const fechaCol = new Date(lunes);
+        fechaCol.setDate(lunes.getDate() + idx);
+        const isoCol = getLocalISODate(fechaCol);
+        const fechaCorta = `${fechaCol.getDate()} ${NOMBRES_MESES[fechaCol.getMonth()].slice(0, 3)}`;
+        const isTrained = diasEntrenadosSet.has(isoCol);
+
+        const diaCodigo = db.Distribucion_Semanal[idx] || "LIBRE";
+
+        if (diaCodigo === "LIBRE") {
+          return `
+            <div class="day-col col-free">
+              <div class="day-col-header">
+                <div class="day-col-title-row">
+                  <span class="day-col-name">${nombreDia}</span>
+                  <span class="day-col-date ${isTrained ? "trained-date" : ""}">${fechaCorta}${isTrained ? " ✓" : ""}</span>
+                </div>
+                <div class="day-col-profile" style="color:var(--text-muted);">DÍA LIBRE / DESCANSO ACTIVO</div>
+              </div>
+              <div class="free-day-box">
+                <div class="free-day-label">✦ Descanso Activo</div>
+                <div class="free-day-desc">Recuperación del templo: movilidad articular suave, caminata ligera o estiramientos.</div>
+              </div>
+            </div>
+          `;
+        }
+
+        const perfilDia = db.Perfiles_Dia.find(p => p.dia_codigo === diaCodigo);
+        const ejercicios = db.Rutinas_Planificadas.filter(r => r.dia_codigo === diaCodigo);
+
+        const cardsHtml = ejercicios.map(ej => {
+          const auto = evaluarAutogestionEjercicio(ej);
+          const rxTexto = ej.tipo === "cardio"
+            ? `${ej.reps_texto}`
+            : `${ej.series} × ${ej.reps_texto} · ${ej.descanso_texto}`;
+
+          return `
+            <div class="ex-mini-card">
+              <div class="ex-mini-top">
+                <span class="block-badge ${ej.tipo === "cardio" ? "cardio-badge" : ""}">${ej.orden_bloque}${ej.tipo === "cardio" ? " · Cardio" : ""}</span>
+                <button type="button" class="btn-guide" onclick="abrirGuiaModal('${ej.rutina_item_id}')">Guía</button>
+              </div>
+              <div class="ex-mini-name">${ej.ejercicio_nombre}</div>
+              <div class="ex-mini-rx">${rxTexto}</div>
+              <div class="autogestion-tag ${auto.clase}">
+                <strong>Sugerencia Auto-Gestión</strong>
+                ${auto.texto}
+              </div>
+              <div class="ex-mini-actions">
+                <button type="button" class="btn btn-sm" onclick="irARegistrarEjercicio('${ej.rutina_item_id}')">Registrar</button>
+              </div>
+            </div>
+          `;
+        }).join("");
+
+        return `
+          <div class="day-col col-active">
+            <div class="day-col-header">
+              <div class="day-col-title-row">
+                <span class="day-col-name">${nombreDia}</span>
+                <span class="day-col-date ${isTrained ? "trained-date" : ""}">${fechaCorta}${isTrained ? " ✓" : ""}</span>
+              </div>
+              <div class="day-col-profile">${perfilDia ? `${perfilDia.etiqueta_corta}: ${perfilDia.perfil_enfoque}` : diaCodigo}</div>
+            </div>
+            <div class="day-col-body">
+              ${cardsHtml}
+            </div>
+          </div>
+        `;
+      }).join("");
+    }
+
+    // =========================================================================
+    // 8. MODAL MINIMALISTA DE GUÍA TÉCNICA
+    // =========================================================================
+    window.abrirGuiaModal = function(rutinaItemId) {
+      const db = store.read();
+      const item = db.Rutinas_Planificadas.find(r => r.rutina_item_id === rutinaItemId);
+      if (!item) return;
+
+      const guia = EXERCISE_GUIDES[item.ejercicio_nombre] || {
+        svg: `<svg width="210" height="96" viewBox="0 0 210 96" fill="none">
+          <circle cx="105" cy="24" r="8" stroke="#5C1616" stroke-width="2.2"/>
+          <line x1="105" y1="32" x2="105" y2="66" stroke="#5C1616" stroke-width="2.5"/>
+          <line x1="78" y1="46" x2="132" y2="46" stroke="#B8860B" stroke-width="2.2"/>
+          <polyline points="88,88 105,66 122,88" stroke="#5C1616" stroke-width="2.2" fill="none"/>
+        </svg>`,
+        bullets: [
+          "<strong>Posición inicial:</strong> Columna neutra, abdomen firme y articulaciones alineadas.",
+          "<strong>Ejecución:</strong> Movimiento controlado en fase concéntrica y excéntrica sin impulsos.",
+          "<strong>Punto clave:</strong> Mantén respiración constante y respeta el margen RIR pautado."
+        ]
+      };
+
+      document.getElementById("modal-ex-title").textContent = item.ejercicio_nombre;
+      document.getElementById("modal-svg-container").innerHTML = guia.svg;
+      document.getElementById("modal-bullets").innerHTML = guia.bullets.map(b => `<li>${b}</li>`).join("");
+
+      const ytQuery = encodeURIComponent(`${item.ejercicio_nombre} técnica corta`);
+      document.getElementById("modal-yt-link").href = `https://www.youtube.com/results?search_query=${ytQuery}`;
+
+      document.getElementById("guide-modal").classList.add("open");
+    };
+
+    function cerrarGuiaModal() {
+      document.getElementById("guide-modal").classList.remove("open");
+    }
+
+    document.getElementById("btn-close-modal").addEventListener("click", cerrarGuiaModal);
+    document.getElementById("btn-close-modal-footer").addEventListener("click", cerrarGuiaModal);
+    document.getElementById("guide-modal").addEventListener("click", (e) => {
+      if (e.target.id === "guide-modal") cerrarGuiaModal();
+    });
+
+    // =========================================================================
+    // 9. PESTAÑA 3: BITÁCORA, CHECK-IN Y REGISTRO (FUERZA Y CARDIO)
+    // =========================================================================
+    let estadoCheckInActual = "normal";
+
+    function renderCheckInUI() {
+      const guardado = obtenerCheckIn(HOY_ISO);
+      const chip = document.getElementById("checkin-status-chip");
+      const notas = document.getElementById("checkin-notas");
+
+      document.querySelectorAll(".checkin-pill").forEach(p => p.classList.remove("selected"));
+
+      if (guardado) {
+        estadoCheckInActual = guardado.estado;
+        const pill = document.querySelector(`.checkin-pill[data-estado="${guardado.estado}"]`);
+        if (pill) pill.classList.add("selected");
+        notas.value = guardado.notas_fisicas || "";
+        chip.textContent = guardado.etiqueta;
+      } else {
+        estadoCheckInActual = "normal";
+        const defaultPill = document.querySelector(`.checkin-pill[data-estado="normal"]`);
+        if (defaultPill) defaultPill.classList.add("selected");
+        chip.textContent = "🟡 Normal (Estable)";
+      }
+    }
+
+    function persistirCheckInHoy() {
+      const db = store.read();
+      const pill = document.querySelector(`.checkin-pill[data-estado="${estadoCheckInActual}"]`);
+      const etiqueta = pill ? pill.dataset.label : "🟡 Normal (Estable)";
+      const notas = document.getElementById("checkin-notas").value.trim();
+
+      const idx = db.CheckIn_Diario.findIndex(c => c.fecha === HOY_ISO);
+      const record = {
+        fecha: HOY_ISO,
+        estado: estadoCheckInActual,
+        etiqueta: etiqueta,
+        notas_fisicas: notas
+      };
+      if (idx >= 0) db.CheckIn_Diario[idx] = record;
+      else db.CheckIn_Diario.push(record);
+
+      store.write(db);
+      renderCheckInUI();
+      renderReglaSemanal();
+    }
+
+    document.querySelectorAll(".checkin-pill").forEach(pill => {
+      pill.addEventListener("click", () => {
+        estadoCheckInActual = pill.dataset.estado;
+        persistirCheckInHoy();
+      });
+    });
+
+    document.getElementById("btn-guardar-checkin").addEventListener("click", () => {
+      persistirCheckInHoy();
+      alert("Estado de disposición guardado para hoy.");
+    });
+
+    // Alternar campos manuales Fuerza vs Cardio
+    document.getElementById("man-tipo").addEventListener("change", (e) => {
+      const esCardio = e.target.value === "cardio";
+      document.getElementById("campos-fuerza").style.display = esCardio ? "none" : "grid";
+      document.getElementById("campos-cardio").style.display = esCardio ? "grid" : "none";
+    });
+
+    // Saltar desde botón "Registrar" de Regla Semanal a Bitácora
+    window.irARegistrarEjercicio = function(rutinaItemId) {
+      const db = store.read();
+      const item = db.Rutinas_Planificadas.find(r => r.rutina_item_id === rutinaItemId);
+      if (!item) return;
+
+      const auto = evaluarAutogestionEjercicio(item);
+      document.getElementById("texto-rapido").value = auto.prefill;
+      document.getElementById("man-rutina-id").value = item.rutina_item_id;
+      document.getElementById("man-ejercicio").value = item.ejercicio_nombre;
+      document.getElementById("man-tipo").value = item.tipo;
+      document.getElementById("man-tipo").dispatchEvent(new Event("change"));
+
+      if (item.tipo === "cardio") {
+        document.getElementById("man-minutos").value = item.duracion_min || 8;
+      } else {
+        document.getElementById("man-series").value = item.series;
+        document.getElementById("man-reps").value = item.reps_max;
+      }
+
+      document.querySelector('[data-tab="tab-bitacora"]').click();
+      document.getElementById("texto-rapido").focus();
+    };
+
+    function guardarRegistroEnBitacora(registro) {
+      const db = store.read();
+      // Obtener perfil del día de la semana actual para enriquecer el registro y el CSV
+      const hoyDate = parseLocalDate(HOY_ISO);
+      const weekdayIdx = (hoyDate.getDay() + 6) % 7;
+      const diaCod = db.Distribucion_Semanal[weekdayIdx] || "LIBRE";
+      const perfilDia = db.Perfiles_Dia.find(p => p.dia_codigo === diaCod);
+
+      const nuevo = {
+        registro_id: `reg_${Date.now()}_${Math.floor(Math.random() * 999)}`,
+        fecha: HOY_ISO,
+        perfil_dia: perfilDia ? `${perfilDia.etiqueta_corta}: ${perfilDia.perfil_enfoque}` : "Sesión Libre",
+        rutina_item_id: registro.rutina_item_id || null,
+        tipo: registro.tipo || "fuerza",
+        ejercicio: registro.ejercicio,
+        series: Number(registro.series) || 1,
+        reps: Number(registro.reps) || 0,
+        peso_kg: Number(registro.peso_kg) || 0,
+        duracion_min: Number(registro.duracion_min) || 0,
+        distancia_detalle: registro.distancia_detalle || "",
+        rpe: registro.rpe !== null && registro.rpe !== "" ? Number(registro.rpe) : null
+      };
+
+      db.Registro_Sesiones.push(nuevo);
+      store.write(db);
+
+      const fb = document.getElementById("feedback-registro");
+      fb.style.display = "block";
+      if (nuevo.tipo === "cardio") {
+        fb.innerHTML = `<strong>✓ Registrado (Cardio):</strong> ${nuevo.ejercicio} · <strong>${nuevo.duracion_min} min</strong> ${nuevo.distancia_detalle ? `(${nuevo.distancia_detalle})` : ""} · RPE ${nuevo.rpe ?? "-"}.`;
+      } else {
+        fb.innerHTML = `<strong>✓ Registrado (Fuerza):</strong> ${nuevo.ejercicio} · <strong>${nuevo.series}×${nuevo.reps}</strong> con <strong>${nuevo.peso_kg} kg</strong> · RPE ${nuevo.rpe ?? "-"}.`;
+      }
+
+      renderTabBitacora();
+      renderCalendarioMensual();
+      renderReglaSemanal();
+      renderTabFicha();
+    }
+
+    // Parser de entrada rápida (Fuerza y Cardio)
+    document.getElementById("btn-registrar-texto").addEventListener("click", () => {
+      const raw = document.getElementById("texto-rapido").value.trim();
+      if (!raw) return;
+
+      const rutinaId = document.getElementById("man-rutina-id").value || null;
+
+      // 1. Intentar formato Cardio: "Remo ergómetro 8min 1800m RPE 8" o "Trotadora 20 min RPE 6.5"
+      const regexCardio = /^(.+?)\s+(\d+(?:\.\d+)?)\s*min(?:utos)?(?:\s+(.+?))?(?:\s+RPE\s*(\d+(?:\.\d+)?))?$/i;
+      const matchCardio = raw.match(regexCardio);
+
+      if (matchCardio) {
+        guardarRegistroEnBitacora({
+          rutina_item_id: rutinaId,
+          tipo: "cardio",
+          ejercicio: matchCardio[1].trim(),
+          series: 1,
+          reps: 0,
+          peso_kg: 0,
+          duracion_min: parseFloat(matchCardio[2]),
+          distancia_detalle: matchCardio[3] ? matchCardio[3].trim() : "",
+          rpe: matchCardio[4] ? parseFloat(matchCardio[4]) : null
+        });
+        document.getElementById("texto-rapido").value = "";
+        document.getElementById("man-rutina-id").value = "";
+        return;
+      }
+
+      // 2. Intentar formato Fuerza: "Press banca 3x10 60kg RPE 8" o "Dominadas 3x5 RPE 8"
+      const regexFuerza = /^(.+?)\s+(\d+)\s*[xX×]\s*(\d+)(?:\s+(\d+(?:\.\d+)?)\s*kg)?(?:\s+RPE\s*(\d+(?:\.\d+)?))?$/i;
+      const matchFuerza = raw.match(regexFuerza);
+
+      if (matchFuerza) {
+        guardarRegistroEnBitacora({
+          rutina_item_id: rutinaId,
+          tipo: "fuerza",
+          ejercicio: matchFuerza[1].trim(),
+          series: parseInt(matchFuerza[2], 10),
+          reps: parseInt(matchFuerza[3], 10),
+          peso_kg: matchFuerza[4] ? parseFloat(matchFuerza[4]) : 0,
+          duracion_min: 0,
+          distancia_detalle: "",
+          rpe: matchFuerza[5] ? parseFloat(matchFuerza[5]) : null
+        });
+        document.getElementById("texto-rapido").value = "";
+        document.getElementById("man-rutina-id").value = "";
+        return;
+      }
+
+      alert('Formato no reconocido.\n• Fuerza: "Press banca 3x10 60kg RPE 8"\n• Cardio: "Remo ergómetro 8min 1800m RPE 8"');
+    });
+
+    document.getElementById("btn-registrar-manual").addEventListener("click", () => {
+      const tipo = document.getElementById("man-tipo").value;
+      const ejercicio = document.getElementById("man-ejercicio").value.trim();
+      if (!ejercicio) return alert("Ingresa el nombre del ejercicio.");
+
+      if (tipo === "cardio") {
+        guardarRegistroEnBitacora({
+          rutina_item_id: document.getElementById("man-rutina-id").value || null,
+          tipo: "cardio",
+          ejercicio: ejercicio,
+          series: 1,
+          reps: 0,
+          peso_kg: 0,
+          duracion_min: parseFloat(document.getElementById("man-minutos").value) || 10,
+          distancia_detalle: document.getElementById("man-distancia").value.trim(),
+          rpe: parseFloat(document.getElementById("man-rpe-c").value) || null
+        });
+      } else {
+        guardarRegistroEnBitacora({
+          rutina_item_id: document.getElementById("man-rutina-id").value || null,
+          tipo: "fuerza",
+          ejercicio: ejercicio,
+          series: parseInt(document.getElementById("man-series").value, 10) || 3,
+          reps: parseInt(document.getElementById("man-reps").value, 10) || 10,
+          peso_kg: parseFloat(document.getElementById("man-peso").value) || 0,
+          duracion_min: 0,
+          distancia_detalle: "",
+          rpe: parseFloat(document.getElementById("man-rpe-f").value) || null
+        });
+      }
+      document.getElementById("man-rutina-id").value = "";
+    });
+
+    function renderTabBitacora() {
+      const db = store.read();
+      document.getElementById("fecha-hoy-label").textContent = HOY_ISO;
+
+      const hoyRegs = (db.Registro_Sesiones || []).filter(r => r.fecha === HOY_ISO);
+      const tonelajeHoy = hoyRegs.reduce((acc, r) => acc + ((r.series || 1) * (r.reps || 0) * (r.peso_kg || 0)), 0);
+      const diasMesActual = new Set(
+        (db.Registro_Sesiones || []).filter(r => r.fecha.startsWith(HOY_ISO.slice(0, 7))).map(r => r.fecha)
+      ).size;
+
+      document.getElementById("kpi-tonelaje").textContent = `${tonelajeHoy} kg`;
+      document.getElementById("kpi-series").textContent = hoyRegs.length;
+      document.getElementById("kpi-total-dias").textContent = diasMesActual;
+
+      const tbody = document.getElementById("tabla-historial");
+      const lista = (db.Registro_Sesiones || []).slice().reverse().slice(0, 25);
+
+      if (lista.length === 0) {
+        tbody.innerHTML = `<tr><td colspan="5" style="text-align:center; color:var(--text-muted);">Aún no hay sesiones registradas.</td></tr>`;
+        return;
+      }
+
+      tbody.innerHTML = lista.map(r => {
+        const detalle = r.tipo === "cardio" ? `${r.duracion_min} min` : `${r.series} × ${r.reps}`;
+        const cargaDist = r.tipo === "cardio" ? (r.distancia_detalle || "Cardio") : `${r.peso_kg} kg`;
+        return `
+          <tr>
+            <td style="white-space:nowrap;">${r.fecha}</td>
+            <td><strong>${r.ejercicio}</strong></td>
+            <td>${detalle}</td>
+            <td>${cargaDist}</td>
+            <td>${r.rpe ?? "-"}</td>
+          </tr>
+        `;
+      }).join("");
+    }
+
+    // =========================================================================
+    // 10. EXPORTACIÓN CSV Y RESPALDO JSON
+    // =========================================================================
+    function descargarBlob(contenido, nombre, mime) {
+      const blob = new Blob([contenido], { type: mime });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = nombre;
+      a.click();
+      URL.revokeObjectURL(url);
+    }
+
+    document.getElementById("btn-export-csv").addEventListener("click", () => {
+      const db = store.read();
+      const checkInsMap = {};
+      (db.CheckIn_Diario || []).forEach(c => { checkInsMap[c.fecha] = c; });
+
+      const headers = [
+        "fecha",
+        "perfil_dia",
+        "estado_disposicion",
+        "notas_fisicas",
+        "tipo",
+        "ejercicio",
+        "series",
+        "reps",
+        "peso_kg",
+        "duracion_min",
+        "distancia_detalle",
+        "rpe"
+      ];
+
+      const filas = (db.Registro_Sesiones || []).map(r => {
+        const ci = checkInsMap[r.fecha] || {};
+        const row = {
+          fecha: r.fecha,
+          perfil_dia: r.perfil_dia || "",
+          estado_disposicion: ci.etiqueta || "Sin check-in",
+          notas_fisicas: ci.notas_fisicas || "",
+          tipo: r.tipo,
+          ejercicio: r.ejercicio,
+          series: r.series,
+          reps: r.reps,
+          peso_kg: r.peso_kg,
+          duracion_min: r.duracion_min,
+          distancia_detalle: r.distancia_detalle || "",
+          rpe: r.rpe ?? ""
+        };
+        return headers.map(h => `"${String(row[h]).replace(/"/g, '""')}"`).join(",");
+      });
+
+      const csvContent = "\uFEFF" + [headers.join(","), ...filas].join("\n");
+      descargarBlob(csvContent, `askesis_bitacora_${HOY_ISO}.csv`, "text/csv;charset=utf-8;");
+    });
+
+    document.getElementById("btn-export-json").addEventListener("click", () => {
+      descargarBlob(JSON.stringify(store.read(), null, 2), `askesis_respaldo_${HOY_ISO}.json`, "application/json");
+    });
+
+    document.getElementById("btn-reset-db").addEventListener("click", () => {
+      if (confirm("¿Restaurar todos los datos a su estado inicial? Se eliminará el historial local.")) {
+        store.reset();
+        renderAll();
+      }
+    });
+
+    // =========================================================================
+    // 11. NAVEGACIÓN DE PESTAÑAS Y CRONÓMETRO DE DESCANSO
+    // =========================================================================
+    document.querySelectorAll(".tab-btn").forEach(btn => {
+      btn.addEventListener("click", () => {
+        document.querySelectorAll(".tab-btn").forEach(b => b.classList.remove("active"));
+        document.querySelectorAll(".panel").forEach(p => p.classList.remove("active"));
+        btn.classList.add("active");
+        document.getElementById(btn.dataset.tab).classList.add("active");
+      });
+    });
+
+    let timerInterval = null;
+    let segundosRestantes = 0;
+
+    function sonarCampanaLiturgica() {
+      try {
+        const ctx = new (window.AudioContext || window.webkitAudioContext)();
+        const osc = ctx.createOscillator();
+        const gain = ctx.createGain();
+        osc.type = "sine";
+        osc.frequency.setValueAtTime(528, ctx.currentTime);
+        gain.gain.setValueAtTime(0.22, ctx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 1.2);
+        osc.connect(gain);
+        gain.connect(ctx.destination);
+        osc.start();
+        osc.stop(ctx.currentTime + 1.2);
+      } catch (e) {}
+    }
+
+    function actualizarTimerUI() {
+      const m = String(Math.floor(segundosRestantes / 60)).padStart(2, "0");
+      const s = String(segundosRestantes % 60).padStart(2, "0");
+      document.getElementById("timer-display").textContent = `${m}:${s}`;
+    }
+
+    document.querySelectorAll(".timer-btn[data-sec]").forEach(btn => {
+      btn.addEventListener("click", () => {
+        clearInterval(timerInterval);
+        document.querySelectorAll(".timer-btn").forEach(b => b.classList.remove("active-timer"));
+        btn.classList.add("active-timer");
+        segundosRestantes = parseInt(btn.dataset.sec, 10);
+        actualizarTimerUI();
+
+        timerInterval = setInterval(() => {
+          segundosRestantes--;
+          actualizarTimerUI();
+          if (segundosRestantes <= 0) {
+            clearInterval(timerInterval);
+            btn.classList.remove("active-timer");
+            sonarCampanaLiturgica();
+          }
+        }, 1000);
+      });
+    });
+
+    document.getElementById("timer-stop").addEventListener("click", () => {
+      clearInterval(timerInterval);
+      segundosRestantes = 0;
+      actualizarTimerUI();
+      document.querySelectorAll(".timer-btn").forEach(b => b.classList.remove("active-timer"));
+    });
+
+    // =========================================================================
+    // 12. INICIALIZACIÓN GLOBAL
+    // =========================================================================
+    function renderAll() {
+      renderTabFicha();
+      renderCalendarioMensual();
+      renderReglaSemanal();
+      renderCheckInUI();
+      renderTabBitacora();
+    }
+
+    renderAll();
+  </script>
+</body>
+</html>
